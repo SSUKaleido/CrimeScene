@@ -19,8 +19,23 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void ApplicationQuit()
+    private bool ExitContinuityCheck = false;
+
+    public IEnumerator ApplicationQuit()
     {
-        Application.Quit();
+        if (ExitContinuityCheck == false)
+        {
+            ExitContinuityCheck = true;
+            yield return new WaitForSeconds(1.5f);
+            ExitContinuityCheck = false;
+        }
+        else
+        {
+            #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+            #else
+                Application.Quit();
+            #endif
+        }
     }
 }

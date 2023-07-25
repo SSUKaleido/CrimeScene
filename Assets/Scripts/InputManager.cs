@@ -8,7 +8,7 @@ public class InputManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            GameManager.instance.ApplicationQuit();
+            StartCoroutine(GameManager.instance.ApplicationQuit());
         }
     }
 }

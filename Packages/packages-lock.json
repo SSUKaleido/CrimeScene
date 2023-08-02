@@ -282,6 +282,13 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unitynative.toasts": {
+      "version": "https://github.com/NicholasSheehan/Unity-Native-Toasts.git#v1.0.4",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "0d4c9883139ead2dc083fd636336eb3a4ae4b53b"
+    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,

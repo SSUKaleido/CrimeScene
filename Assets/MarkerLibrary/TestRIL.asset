@@ -18,12 +18,12 @@ MonoBehaviour:
     m_Storage: []
   m_Images:
   - m_SerializedGuid:
-      m_GuidLow: 4938038110712712341
-      m_GuidHigh: 10058938574625676464
+      m_GuidLow: 5178568442759981797
+      m_GuidHigh: 5975127617331971221
     m_SerializedTextureGuid:
       m_GuidLow: 16457367184517135144
       m_GuidHigh: 7831712470340116152
-    m_Size: {x: 0.15, y: 0.15}
-    m_SpecifySize: 1
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
     m_Name: KaleidoIcon
     m_Texture: {fileID: 0}

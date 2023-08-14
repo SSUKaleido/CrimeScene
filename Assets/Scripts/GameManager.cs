@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     }
 
     private bool ExitContinuityCheck = false;
-    private string toastMessage = "\'취소\' 명령을 한 번 더 입력하면 종료합니다";
+    private string toastMessage = "취소 명령을 한 번 더 입력하면 종료합니다";
 
     public IEnumerator ApplicationQuit()
     {

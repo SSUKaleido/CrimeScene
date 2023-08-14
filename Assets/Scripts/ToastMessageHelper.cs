@@ -12,6 +12,6 @@ public class ToastMessageHelper : MonoBehaviour
     }
 
     public static void ShowToastMessage(string toastText) {
-        unityNativeToasts.ShowLongToast(toastText);
+        unityNativeToasts.ShowShortToast(toastText);
     }
 }

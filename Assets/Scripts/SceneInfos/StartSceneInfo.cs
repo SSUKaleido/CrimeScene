@@ -10,6 +10,7 @@ public class StartSceneInfo : BaseSceneInfo
         base.Init();
 
         SceneType = Define.Scene.StartScene;
+        GameManager.UI.ShowSceneUI<UI_StartScene_SceneMenu>("StartScene_SceneMenu");
 
         GameManager.Input.AddInputAction(ActiveEscapeKey);
 
@@ -22,13 +23,6 @@ public class StartSceneInfo : BaseSceneInfo
     {
         GameManager.Input.RemoveInputAction(ActiveEscapeKey);
     }
-
-
-    public void LoadMainScene()
-    {
-        GameManager.SceneLoad.LoadScene(Define.Scene.MainScene);
-    }
-
 
     private bool ExitContinuityCheck = false;
     private string toastMessage = "취소 명령을 한 번 더 입력하면 종료합니다";
@@ -51,7 +45,7 @@ public class StartSceneInfo : BaseSceneInfo
                 #if UNITY_EDITOR
                     UnityEditor.EditorApplication.isPlaying = false;
                 #else
-                    ApplicationQuit();
+                    Application.Quit();
                 #endif
             }
         }
@@ -62,9 +56,5 @@ public class StartSceneInfo : BaseSceneInfo
         ExitContinuityCheck = true;
         yield return new WaitForSeconds(1.5f);
         ExitContinuityCheck = false;
-    }
-
-    public void ApplicationQuit() {
-        Application.Quit();
     }
 }

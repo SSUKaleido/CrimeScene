@@ -4,7 +4,7 @@ using UnityEngine;
 
 /**
 * 여러 매니저들을 통합적으로 관리하기 위해 사용하는 클래스
-* GameManager.Game.…… 식으로 사용하면 됩니다
+* GameManager.Ingame.…… 식으로 사용하면 됩니다
 */
 public class GameManager : MonoBehaviour
 {
@@ -26,10 +26,13 @@ public class GameManager : MonoBehaviour
     ResourceManager _resource = new ResourceManager();
     /** 씬 로드를 관리하는 SceneLoadManager **/
     SceneLoadManager _SceneLoad = new SceneLoadManager();
+    /** 팝업 UI 생성, 파괴를 관리하는 UIPopupMangaer **/
+    UIManager _UI = new UIManager();
 
     public static InputManager Input { get { return Instance._input; } }
     public static ResourceManager Resource { get  { return Instance._resource; } }
     public static SceneLoadManager SceneLoad { get { return Instance._SceneLoad; } }
+    public static UIManager UI { get { return Instance._UI; } }
 
 
     /** 이 오브젝트가 생성되면 Init() 수행 **/

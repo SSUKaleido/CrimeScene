@@ -1,0 +1,70 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class StartSceneInfo : BaseSceneInfo
+{
+    protected override void Init()  // 상속 받은 Awake() 안에서 실행됨. "StartScene"씬 초기화
+    {
+        base.Init();
+
+        SceneType = Define.Scene.StartScene;
+
+        GameManager.Input.AddInputAction(ActiveEscapeKey);
+
+        /**
+        * 그 외 기타 StartScene 로딩 코드는 여기다 추가하면 됨!
+        */
+    }
+
+    public override void Clear()
+    {
+        GameManager.Input.RemoveInputAction(ActiveEscapeKey);
+    }
+
+
+    public void LoadMainScene()
+    {
+        GameManager.SceneLoad.LoadScene(Define.Scene.MainScene);
+    }
+
+
+    private bool ExitContinuityCheck = false;
+    private string toastMessage = "취소 명령을 한 번 더 입력하면 종료합니다";
+
+    public void ActiveEscapeKey()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (ExitContinuityCheck == false)
+            {
+                #if UNITY_EDITOR
+                    Debug.Log(toastMessage);
+                #else
+                    ToastMessageHelper.ShowToastMessage(toastMessage);
+                #endif
+                StartCoroutine(SwitchEscapeContinuity());
+            }
+            else
+            {
+                #if UNITY_EDITOR
+                    UnityEditor.EditorApplication.isPlaying = false;
+                #else
+                    ApplicationQuit();
+                #endif
+            }
+        }
+    }
+
+    private IEnumerator SwitchEscapeContinuity()
+    {
+        ExitContinuityCheck = true;
+        yield return new WaitForSeconds(1.5f);
+        ExitContinuityCheck = false;
+    }
+
+    public void ApplicationQuit() {
+        Application.Quit();
+    }
+}

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainSceneInfo : BaseSceneInfo
 {
@@ -8,7 +9,10 @@ public class MainSceneInfo : BaseSceneInfo
     {
         base.Init(); // BaseScene의 Init()
 
-        SceneType = Define.Scene.MainScene; // 
+        SceneType = Define.Scene.MainScene;
+        GameManager.UI.ShowSceneUI<UI_MainScene_SceneMenu>("MainScene_SceneMenu");
+
+        GameManager.Input.AddInputAction(ActiveEscapeKey);
 
         /**
         * 그 외 기타 MainScene 로딩 코드는 여기다 추가하면 됨!
@@ -17,6 +21,10 @@ public class MainSceneInfo : BaseSceneInfo
 
     public override void Clear()
     {
-        
+        GameManager.Input.RemoveInputAction(ActiveEscapeKey);
+    }
+
+    public void ActiveEscapeKey() {
+        // 일시 정지 메뉴 열고 메인 씬으로
     }
 }

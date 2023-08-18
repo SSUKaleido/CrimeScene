@@ -4,7 +4,7 @@ using UnityEngine;
 
 /**
 * 여러 매니저들을 통합적으로 관리하기 위해 사용하는 클래스
-* GameManager.Ingame.…… 식으로 사용하면 됩니다
+* GameManager.(하위 매니저).(메서드)…… 식으로 사용하면 됩니다 ex) GameManaer.Resource.Instantiate()
 */
 public class GameManager : MonoBehaviour
 {
@@ -25,13 +25,13 @@ public class GameManager : MonoBehaviour
     /** 프리펩 생성을 관리하는 ResourceManager **/
     ResourceManager _resource = new ResourceManager();
     /** 씬 로드를 관리하는 SceneLoadManager **/
-    SceneLoadManager _SceneLoad = new SceneLoadManager();
+    SceneLoadManager _Scene = new SceneLoadManager();
     /** 팝업 UI 생성, 파괴를 관리하는 UIPopupMangaer **/
     UIManager _UI = new UIManager();
 
     public static InputManager Input { get { return Instance._input; } }
     public static ResourceManager Resource { get  { return Instance._resource; } }
-    public static SceneLoadManager SceneLoad { get { return Instance._SceneLoad; } }
+    public static SceneLoadManager Scene { get { return Instance._Scene; } }
     public static UIManager UI { get { return Instance._UI; } }
 
 
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
     }
 
     /**
-    * Mangers.cs를 컴포넌트로 가지는 GameManager 오브젝트 초기화
+    * Gamanager.cs를 컴포넌트로 가지는 GameManager 오브젝트 초기화
     */
     static void Init()
     {

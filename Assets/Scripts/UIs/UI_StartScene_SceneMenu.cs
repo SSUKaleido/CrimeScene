@@ -5,11 +5,14 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
+/**
+* StartScene_SceneMenu 캔버스에 붙을 컴포넌트
+* 유니티 에디터에서 오브젝트들을 바인딩하지 않고 코드로 연결하려고 사용
+*/
 public class UI_StartScene_SceneMenu : UI_Scene
 {
     enum Images
     {
-        BackgroundPanel
     }
 
     enum Buttons
@@ -22,11 +25,10 @@ public class UI_StartScene_SceneMenu : UI_Scene
 
     enum Texts
     {
-        TitleText,
-        GameStartButtonText,
-        GameCountinueButtonText,
-        GameExitButtonText,
-        SettingButtonText
+    }
+
+    enum GameObjects
+    {
     }
 
     private void Start()
@@ -42,6 +44,7 @@ public class UI_StartScene_SceneMenu : UI_Scene
         Bind<Button>(typeof(Buttons));
         Bind<TextMeshProUGUI>(typeof(Texts));
         Bind<Image>(typeof(Images));
+        //Bind<GameObject>(typeof(GameObjects));
 
         // (확장 메서드) 버튼들에 UI_EvenetHandler를 붙이고 각 메서드를 등록한다.
         GetButton((int)Buttons.GameStartButton).gameObject.BindEvent(OnGameStartButton);
@@ -55,11 +58,15 @@ public class UI_StartScene_SceneMenu : UI_Scene
     }
 
     public void OnGameCountinueButton(PointerEventData data) {
-        //GameManger.UI.ShowPopupUI<UI_StartScene_PopupCountinueCaseMenu>("StartScene_PopupCountinueCaseMenu");
+        GameManager.UI.ShowPopupUI<UI_StartScene_PopupCountinueCaseMenu>("StartScene_PopupCountinueCaseMenu");
     }
 
     public void OnGameExitButton(PointerEventData data) {
-        Application.Quit();
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
     }
 
     public void OnSettingButton(PointerEventData data) {

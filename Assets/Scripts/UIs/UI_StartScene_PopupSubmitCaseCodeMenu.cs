@@ -13,7 +13,6 @@ public class UI_StartScene_PopupSubmitCaseCodeMenu : UI_Popup
 {
     enum Images
     {
-        BackgroundPanel,
         PopupMenu
     }
 
@@ -25,10 +24,13 @@ public class UI_StartScene_PopupSubmitCaseCodeMenu : UI_Popup
 
     enum Texts
     {
-        CancleButtonText,
         TitleText,
-        GuideText,
-        GameStartButtonText
+        GuideText
+    }
+
+    enum GameObjects
+    {
+        CaseCodeInputField
     }
 
     private void Start()
@@ -44,19 +46,17 @@ public class UI_StartScene_PopupSubmitCaseCodeMenu : UI_Popup
         Bind<Button>(typeof(Buttons));
         Bind<TextMeshProUGUI>(typeof(Texts));
         Bind<Image>(typeof(Images));
+        Bind<GameObject>(typeof(GameObjects));
 
-        GetButton((int)Buttons.CancleButton).gameObject.BindEvent(OnCancleButton);
+        GetButton((int)Buttons.CancleButton).gameObject.BindEvent(CloseThisPopupUI);
         GetButton((int)Buttons.GameStartButton).gameObject.BindEvent(OnGameStartButton);
 	}
-
-    public void OnCancleButton(PointerEventData data)
-    {
-        GameManager.UI.ClosePopupUI(this);
-    }
 
     /** MainScene을 로드하는 메서드 */
     public void OnGameStartButton(PointerEventData data)
     {
-        GameManager.SceneLoad.LoadScene(Define.Scene.MainScene);
+        string inputedCaseCode = GetObject((int)GameObjects.CaseCodeInputField).GetComponent<TMP_InputField>().text;
+        
+        GameManager.Scene.LoadScene(Define.Scene.MainScene);
     }
 }

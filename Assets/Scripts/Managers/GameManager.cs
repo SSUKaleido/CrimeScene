@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
-* 여러 매니저들을 통합적으로 관리하기 위해 사용하는 클래스
+* 여러 하위 매니저들을 프로퍼티로 넣어 효과적으로 게임 관리
 * GameManager.(하위 매니저).(메서드)…… 식으로 사용하면 됩니다 ex) GameManaer.Resource.Instantiate()
 */
 public class GameManager : MonoBehaviour
@@ -28,11 +28,14 @@ public class GameManager : MonoBehaviour
     SceneLoadManager _Scene = new SceneLoadManager();
     /** 팝업 UI 생성, 파괴를 관리하는 UIPopupMangaer **/
     UIManager _UI = new UIManager();
+    /** 사운드를 관리하는 SoundManager **/
+    SoundManager _Sound = new SoundManager();
 
     public static InputManager Input { get { return Instance._input; } }
     public static ResourceManager Resource { get  { return Instance._resource; } }
     public static SceneLoadManager Scene { get { return Instance._Scene; } }
     public static UIManager UI { get { return Instance._UI; } }
+    public static SoundManager Sound { get { return Instance._Sound; } }
 
 
     /** 이 오브젝트가 생성되면 Init() 수행 **/
@@ -70,5 +73,17 @@ public class GameManager : MonoBehaviour
             //인스턴스 할당
             _instace = obj.GetComponent<GameManager>();
         }
+    }
+
+    /**
+    * 각 하위 매니저의 클리어 함수 동작
+    * 주로 씬을 이동할 때 동작
+    */
+    public static void Clear()
+    {
+        Input.Clear();
+        Scene.Clear();
+        Sound.Clear();
+        UI.Clear();
     }
 }

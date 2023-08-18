@@ -35,15 +35,9 @@ public class InputManager
             KeyAction.Invoke();
     }
 
-    /*void Update()
+    public void Clear()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            ActiveEscapeKey();
-        }
+        KeyAction = null;
+        //MouseAction = null;
     }
-
-    public void ActiveEscapeKey() {
-        GameManager.instance.EscapeScene(); // 추후 메인 씬 UI 개발 후 이곳에 일시정지 메뉴 팝업 넣기
-    } */
 }

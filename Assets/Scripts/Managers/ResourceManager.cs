@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/** 프리팹 생성을 관리하는 매니저
+/**
+* 프리팹 생성을 관리하는 매니저
 * GameManager.Resource.Instatiate("KaleidoIcon")으로만 해도 알아서 프리펩 찾아서 생성해 줍니다
 */
 public class ResourceManager 

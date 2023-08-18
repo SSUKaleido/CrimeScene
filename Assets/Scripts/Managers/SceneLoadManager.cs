@@ -30,7 +30,7 @@ public class SceneLoadManager
     */
 	public void LoadScene(Define.Scene type)
     {
-        Clear();
+        GameManager.Clear();
 
         SceneManager.LoadScene(GetSceneName(type)); // SceneManager는 UnityEngine의 SceneManager
     }

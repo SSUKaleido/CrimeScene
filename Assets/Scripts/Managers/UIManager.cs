@@ -118,9 +118,16 @@ public class UIManager
             ClosePopupUI();
     }
 
+    /** 현재 가장 위에 있는 Ui 컴포넌트 반환 **/
     public UI_Base CurrentTopUI() {
         if (_popupStack.Count == 0)
             return _sceneUI;
         return _popupStack.Peek();
+    }
+
+    public void Clear()
+    {
+        CloseAllPopupUI();
+        _sceneUI = null;
     }
 }

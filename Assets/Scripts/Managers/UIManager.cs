@@ -18,9 +18,9 @@ public class UIManager
     {
         get
         {
-            GameObject root = GameObject.Find("@UI_Root");
+            GameObject root = GameObject.Find("UI_Root");
             if (root == null)
-                root = new GameObject { name = "@UI_Root" };
+                root = new GameObject { name = "UI_Root" };
             return root;
 		}
     }
@@ -116,5 +116,11 @@ public class UIManager
     {
         while (_popupStack.Count > 0)
             ClosePopupUI();
+    }
+
+    public UI_Base CurrentTopUI() {
+        if (_popupStack.Count == 0)
+            return _sceneUI;
+        return _popupStack.Peek();
     }
 }

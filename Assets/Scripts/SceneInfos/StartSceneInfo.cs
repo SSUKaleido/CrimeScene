@@ -13,6 +13,7 @@ public class StartSceneInfo : BaseSceneInfo
         GameManager.UI.ShowSceneUI<UI_StartScene_SceneMenu>("StartScene_SceneMenu");
 
         GameManager.Input.AddInputAction(ActiveEscapeKey);
+        GameManager.Sound.Init();
 
         /**
         * 그 외 기타 StartScene 로딩 코드는 여기다 추가하면 됨!
@@ -21,7 +22,7 @@ public class StartSceneInfo : BaseSceneInfo
 
     public override void Clear()
     {
-        GameManager.Input.RemoveInputAction(ActiveEscapeKey);
+
     }
 
     private bool ExitContinuityCheck = false;

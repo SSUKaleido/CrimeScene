@@ -1,0 +1,189 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+  m_Name: EvidenceMarker_ReferenceImageLibrary
+  m_EditorClassIdentifier: 
+  m_GuidLow: 5364052878859036367
+  m_GuidHigh: 855807298473695158
+  m_DataStore:
+    m_Storage: []
+  m_Images:
+  - m_SerializedGuid:
+      m_GuidLow: 5219682921310856739
+      m_GuidHigh: 12842457915158569132
+    m_SerializedTextureGuid:
+      m_GuidLow: 18101326755829996539
+      m_GuidHigh: 18430612536906789368
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: Marker_1
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4624108734035963559
+      m_GuidHigh: 7295265924321995929
+    m_SerializedTextureGuid:
+      m_GuidLow: 3802249995697602925
+      m_GuidHigh: 13085624859529664170
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: Marker_2
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4730520660883465573
+      m_GuidHigh: 10846577553803047846
+    m_SerializedTextureGuid:
+      m_GuidLow: 8269987945350462357
+      m_GuidHigh: 3081466591940064603
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: Marker_3
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5749509438944141511
+      m_GuidHigh: 6525480000900339359
+    m_SerializedTextureGuid:
+      m_GuidLow: 883950359781260819
+      m_GuidHigh: 7538749687925560218
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: Marker_4
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5674943393316506649
+      m_GuidHigh: 4148003760656692380
+    m_SerializedTextureGuid:
+      m_GuidLow: 15412476258843854212
+      m_GuidHigh: 13705110383053112139
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: Marker_5
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5309091536260530610
+      m_GuidHigh: 6251662902561896592
+    m_SerializedTextureGuid:
+      m_GuidLow: 1591173394449916180
+      m_GuidHigh: 4730602500876669354
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: Marker_6
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4845118034939482701
+      m_GuidHigh: 13580833082998387104
+    m_SerializedTextureGuid:
+      m_GuidLow: 13597742867748787561
+      m_GuidHigh: 2630252831753474904
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: Marker_7
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5618190785240235539
+      m_GuidHigh: 4330242861184381864
+    m_SerializedTextureGuid:
+      m_GuidLow: 2302695025309469031
+      m_GuidHigh: 2185742233616214986
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: Marker_8
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5414056061980645153
+      m_GuidHigh: 10980118412459995835
+    m_SerializedTextureGuid:
+      m_GuidLow: 18281240601196894722
+      m_GuidHigh: 2681282301443001563
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: Marker_9
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4621408631836610220
+      m_GuidHigh: 4760829382456917407
+    m_SerializedTextureGuid:
+      m_GuidLow: 12426609948089069326
+      m_GuidHigh: 18059678713297802123
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: Marker_10
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5520165093250692521
+      m_GuidHigh: 10635265561856537269
+    m_SerializedTextureGuid:
+      m_GuidLow: 9413722846046227206
+      m_GuidHigh: 9157592878915108841
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: Marker_11
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5452733584301702492
+      m_GuidHigh: 15164155288435461033
+    m_SerializedTextureGuid:
+      m_GuidLow: 15331579542676802459
+      m_GuidHigh: 16994887127938944843
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: Marker_12
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5568355307496410355
+      m_GuidHigh: 12255193016201147826
+    m_SerializedTextureGuid:
+      m_GuidLow: 10895425421046527204
+      m_GuidHigh: 6133959043301384539
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: Marker_13
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4766519183109762954
+      m_GuidHigh: 15321510363573178245
+    m_SerializedTextureGuid:
+      m_GuidLow: 15038682424457885972
+      m_GuidHigh: 3852086275418175384
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: Marker_14
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5012182162663243961
+      m_GuidHigh: 9545822420342124186
+    m_SerializedTextureGuid:
+      m_GuidLow: 10332513226616365835
+      m_GuidHigh: 16133002170466001835
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: Marker_15
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5228579410749588234
+      m_GuidHigh: 5469273085435888533
+    m_SerializedTextureGuid:
+      m_GuidLow: 8256274083510517643
+      m_GuidHigh: 6219499202494641320
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Marker_Hint
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5687257013403973532
+      m_GuidHigh: 1771777038220163468
+    m_SerializedTextureGuid:
+      m_GuidLow: 11854759369510458448
+      m_GuidHigh: 11016190659186858347
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: KaleidoIcon
+    m_Texture: {fileID: 0}

@@ -14,12 +14,12 @@ public class AREvidenceHolder : MonoBehaviour
     private ARTrackedImageManager trackedEvidenceMarkerManager = null;
     private Camera mainCamera = null;
 
+    private ARTrackedImage _trackedImage;
     private GameObject HoldingEvidence = null;
+    private float swipeSensitivity;
 
     /** 추적한 마커에 따라 생성할 오브젝트를 정해주는 딕셔너리. key: 마커 이름 value: 생성할 프리펩 */
     private Dictionary<string, string> _evidenceDic = new Dictionary<string, string>();
-
-    private Quaternion deltaRotation = Quaternion.Euler(-90,0,0);
 
     void Awake()
     {
@@ -29,7 +29,16 @@ public class AREvidenceHolder : MonoBehaviour
         // 임시로 칼레이도 아이콘 모델만 나오도록 함.
         _evidenceDic.Add("KaleidoIcon", "KaleidoIconModel");
 
+        Vector2 screenSize = new Vector2(Screen.width, Screen.height);
+        swipeSensitivity = Mathf.Max(screenSize.x, screenSize.y) / 14f;
+
         StartTrackEvidence();
+    }
+
+    void Update()
+    {
+        if (_trackedImage != null)
+            SetHoldingEvidencePos();
     }
 
     public void StartTrackEvidence() {
@@ -67,7 +76,7 @@ public class AREvidenceHolder : MonoBehaviour
             * Tracking Image Manager가 전달함.
             * 따라서 인식한 이미지의 TrackingState가 Tracking인지 확인하는 조건문을 이용하여야 함.
             */
-            if (HoldingEvidence == null && trackedImage.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Tracking)
+            if (_trackedImage == null && trackedImage.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Tracking)
             {
                 CatchHoldingEvidence(trackedImage);
             }
@@ -76,7 +85,7 @@ public class AREvidenceHolder : MonoBehaviour
         /** added 이벤트가 무시될 수도 있으므로 update 이벤트에서도 같은 코드 실행 */
         foreach (ARTrackedImage trackedImage in eventArgs.updated)
         {
-            if (HoldingEvidence == null && trackedImage.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Tracking)
+            if (_trackedImage == null && trackedImage.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Tracking)
             {
                 CatchHoldingEvidence(trackedImage);
             }
@@ -90,18 +99,16 @@ public class AREvidenceHolder : MonoBehaviour
         
         /** 새 홀딩 프리펩을 생성 */
         string markerName = trackedImage.referenceImage.name;
+        _trackedImage = trackedImage;
         markerName = "KaleidoIcon"; // 나중에 이 줄 삭제
         HoldingEvidence = GameManager.Resource.Instantiate(_evidenceDic[markerName]);
 
         StopTrackEvidence(); // 이미지 마커 추적 그만
-        /** SetHoldingEvidencePos를 InptManager에 넣어서 매 프레임마다 실행되도록 함. */
-        //GameManager.Input.AddInputAction(SetHoldingEvidencePos);
         GameManager.Input.AddInputAction(TouchControlEvidence);
     }
 
     /**
-    * 단서 그만 보기 용도로 사용할 메서드.
-    * 더블 클릭 기능 넣을 것.
+    * 단서 그만 보기 용도 메서드.
     */
     private void RemoveHoldingEvidence()
     {
@@ -109,8 +116,7 @@ public class AREvidenceHolder : MonoBehaviour
             Destroy(HoldingEvidence);
         HoldingEvidence = null;
         
-        /** 매 프레임마다 실행했던 SetHoldingEvidencePos를 그만 실행 */
-        //GameManager.Input.RemoveInputAction(SetHoldingEvidencePos);
+        _trackedImage = null;
         GameManager.Input.RemoveInputAction(TouchControlEvidence);
         StartTrackEvidence();
     }
@@ -119,13 +125,14 @@ public class AREvidenceHolder : MonoBehaviour
     private void SetHoldingEvidencePos()
     {
         Vector3 cameraPosition = mainCamera.transform.position;
-        Quaternion cameraRotation = mainCamera.transform.rotation * deltaRotation;
         Vector3 cameraForward = mainCamera.transform.forward;
 
         HoldingEvidence.transform.position = cameraPosition + cameraForward;
-        HoldingEvidence.transform.rotation = cameraRotation;
     }
 
+    private Vector2 beganTouchPos;
+    private Vector2 curTouchPos;
+    private bool isNowSwiping = false;
     private bool DoubleClickCheck = false;
     /**
     * 화면 스와이프 단서 회전과 더블 클릭 단서 제거를 담당하는 메서드
@@ -137,31 +144,61 @@ public class AREvidenceHolder : MonoBehaviour
         {
             Touch inputTouch = Input.GetTouch(0);
 
+            /**
+            * inputTouch.phase Enum에는 다음 값들이 있음.
+            * Began: 화면 터치가 시작되었을 때
+            * Moved: 터치가 움직였을 때
+            * Ended: 터치가 끝났을 때
+            */
             switch (inputTouch.phase)
             {
-                /** 화면 터치가 시작되었을 때 */
                 case TouchPhase.Began : {
+                    /** 스와이프 중 중복 입력을 막기 위해 break; */
+                    if (isNowSwiping == true)
+                        break;
+                    
+                    /** 더블 클릭 코루틴 구절 */
                     if (DoubleClickCheck == false)
                         StartCoroutine(SwitchDoubleClick());
                     else
                         RemoveHoldingEvidence();
                     
+                    beganTouchPos = inputTouch.position;
+
                     break;
                 }
                 case TouchPhase.Moved : {
+                    if (isNowSwiping == true)
+                    {
+                        Vector3 deltaPos = inputTouch.deltaPosition;
+                        Vector3 rotationAxis = mainCamera.transform.right * deltaPos.y - mainCamera.transform.up * deltaPos.x;
+                        HoldingEvidence.transform.Rotate(rotationAxis, Space.World);
+                    }
+                    else
+                    {
+                        curTouchPos = inputTouch.position;
+                        Vector2 curDiffPos = curTouchPos - beganTouchPos;
+                        if (curDiffPos.magnitude > swipeSensitivity)
+                        {
+                            isNowSwiping = true;
+                        }
+                    }
+
                     break;
                 }
                 case TouchPhase.Ended : {
+                    isNowSwiping = false;
                     break;
                 }
             }
         }
     }
 
+    private const float doubleTouchDelay = 0.2f;
     private IEnumerator SwitchDoubleClick()
     {
         DoubleClickCheck = true;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(doubleTouchDelay);
         DoubleClickCheck = false;
     }
 }

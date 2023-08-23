@@ -14,6 +14,7 @@ public class AREvidenceHolder : MonoBehaviour
     private ARTrackedImageManager trackedEvidenceMarkerManager = null;
     private Camera mainCamera = null;
 
+     // AR Image Tracker에서 GameObject == null을 검사하는 것보다 ARTrackedImage == null을 검사하는 게 더 빠름
     private ARTrackedImage _trackedImage;
     private GameObject HoldingEvidence = null;
     private float swipeSensitivity;
@@ -33,12 +34,6 @@ public class AREvidenceHolder : MonoBehaviour
         swipeSensitivity = Mathf.Max(screenSize.x, screenSize.y) / 14f;
 
         StartTrackEvidence();
-    }
-
-    void Update()
-    {
-        if (_trackedImage != null)
-            SetHoldingEvidencePos();
     }
 
     public void StartTrackEvidence() {
@@ -104,6 +99,7 @@ public class AREvidenceHolder : MonoBehaviour
         HoldingEvidence = GameManager.Resource.Instantiate(_evidenceDic[markerName]);
 
         StopTrackEvidence(); // 이미지 마커 추적 그만
+        StartHoldingEvidencePos();
         GameManager.Input.AddInputAction(TouchControlEvidence);
     }
 
@@ -122,12 +118,9 @@ public class AREvidenceHolder : MonoBehaviour
     }
 
     /** 홀딩하고 있는 단서가 카메라 앞에 위치하도록 위치와 회전을 변경하는 메서드 **/
-    private void SetHoldingEvidencePos()
+    private void StartHoldingEvidencePos()
     {
-        Vector3 cameraPosition = mainCamera.transform.position;
-        Vector3 cameraForward = mainCamera.transform.forward;
-
-        HoldingEvidence.transform.position = cameraPosition + cameraForward;
+        StartCoroutine(UpdateHoldingEvidencePos());
     }
 
     private Vector2 beganTouchPos;
@@ -200,5 +193,25 @@ public class AREvidenceHolder : MonoBehaviour
         DoubleClickCheck = true;
         yield return new WaitForSeconds(doubleTouchDelay);
         DoubleClickCheck = false;
+    }
+
+    private IEnumerator UpdateHoldingEvidencePos()
+    {
+        while (true)
+        {
+            if (HoldingEvidence != null)
+            {
+                Vector3 cameraPosition = mainCamera.transform.position;
+                Vector3 cameraForward = mainCamera.transform.forward;
+
+                HoldingEvidence.transform.position = cameraPosition + cameraForward;
+            }
+            else
+            {
+                yield break;
+            }
+
+            yield return null;
+        }
     }
 }

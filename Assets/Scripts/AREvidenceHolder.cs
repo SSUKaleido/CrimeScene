@@ -28,7 +28,7 @@ public class AREvidenceHolder : MonoBehaviour
         mainCamera = gameObject.transform.GetChild(0).GetComponent<Camera>();
 
         // 임시로 칼레이도 아이콘 모델만 나오도록 함.
-        _evidenceDic.Add("KaleidoIcon", "KaleidoIconModel");
+        _evidenceDic.Add("KaleidoIcon", "KaleidoIconModelVariant");
 
         Vector2 screenSize = new Vector2(Screen.width, Screen.height);
         swipeSensitivity = Mathf.Max(screenSize.x, screenSize.y) / 14f;

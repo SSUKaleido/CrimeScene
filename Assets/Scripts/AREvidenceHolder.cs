@@ -55,7 +55,7 @@ public class AREvidenceHolder : MonoBehaviour
         /**
         * eventArgs에는 다음 값들이 있음
         * added: 처음 이미지가 인식되었을 때.
-        * update: 이미지가 계속 인식되고 있을 때.
+        * updated: 이미지가 계속 인식되고 있을 때.
         * removed: 이미지가 더는 인식되지 않을 때, 그러나 AR Foundation의 결함으로 실제로는 호출되지 않음
         * foreach 문을 통해 이벤트에서 인식된 이미지를 가져옴.
         */

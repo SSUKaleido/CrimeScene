@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainSceneInfo : BaseSceneInfo
 {
     //private AREvidenceHolder EvidenceHolder;
+    public Camera ARMainCamera;
 
 	protected override void Init() // 상속 받은 Awake() 안에서 실행됨. "MainScene"씬 초기화
     {
@@ -15,6 +16,8 @@ public class MainSceneInfo : BaseSceneInfo
         GameManager.UI.ShowSceneUI<UI_MainScene_SceneMenu>("MainScene_SceneMenu");
 
         GameManager.Input.AddInputAction(ActiveEscapeKey);
+
+        ARMainCamera = Camera.main;
 
         //EvidenceHolder = GameObject.FindObjectOfType<AREvidenceHolder>();
 
@@ -46,7 +49,21 @@ public class MainSceneInfo : BaseSceneInfo
             }
             else {
                 GameManager.UI.ClosePopupUI();
+                if (GameManager.UI.CurrentTopUI().GetType().ToString() == "UI_MainScene_SceneMenu")
+                {
+                    SetCameraOn();
+                }
             }   
         }
+    }
+
+    public void SetCameraOff()
+    {
+        ARMainCamera.enabled = false;
+    }
+
+    public void SetCameraOn()
+    {
+        ARMainCamera.enabled = true;
     }
 }

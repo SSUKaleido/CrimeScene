@@ -7,6 +7,7 @@ using TMPro;
 
 public class UI_MainScene_PopupDetectiveNoteMenu : UI_Popup
 {
+    private MainSceneInfo _mainSceneInfo;
     enum Images
     {
     }
@@ -39,13 +40,14 @@ public class UI_MainScene_PopupDetectiveNoteMenu : UI_Popup
         Bind<Image>(typeof(Images));
         Bind<GameObject>(typeof(GameObjects));
 
-        //AR 세션 비활성화 시키는 코드 추가
+        //AR 카메라 비활성화 시키는 용도로
+        _mainSceneInfo = GameObject.FindWithTag("SceneInfo").GetComponent<MainSceneInfo>();
 
         GetButton((int)Buttons.CancleButton).gameObject.BindEvent(CloseThisPopupUI);
 	}
 
     new public void CloseThisPopupUI(PointerEventData data) {
-        //AR 세션 재활성화 시키는 코드 추가
+        _mainSceneInfo.SetCameraOn();
         GameManager.UI.ClosePopupUI(this);
     }
 }

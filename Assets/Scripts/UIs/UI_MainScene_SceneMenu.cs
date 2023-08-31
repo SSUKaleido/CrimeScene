@@ -11,6 +11,8 @@ using TMPro;
 */
 public class UI_MainScene_SceneMenu : UI_Scene
 {
+    private MainSceneInfo _mainSceneInfo;
+
     enum Images
     {
     }
@@ -48,6 +50,8 @@ public class UI_MainScene_SceneMenu : UI_Scene
 
         GetButton((int)Buttons.PauseMenuButton).gameObject.BindEvent(OnPauseMenuButton);
         GetButton((int)Buttons.DetectiveNoteMenuButton).gameObject.BindEvent(OnDetectiveNoteMenuButton);
+
+        _mainSceneInfo = GameObject.FindWithTag("SceneInfo").GetComponent<MainSceneInfo>();
 	}
 
     public void OnPauseMenuButton(PointerEventData data) {
@@ -56,5 +60,6 @@ public class UI_MainScene_SceneMenu : UI_Scene
     
     public void OnDetectiveNoteMenuButton(PointerEventData data) {
         GameManager.UI.ShowPopupUI<UI_MainScene_PopupDetectiveNoteMenu>("MainScene_PopupDetectiveNoteMenu");
+        _mainSceneInfo.SetCameraOff();
     }
 }

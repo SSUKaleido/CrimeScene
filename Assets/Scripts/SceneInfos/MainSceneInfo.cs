@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Unity.XR.CoreUtils;
+using UnityEngine.XR.ARFoundation;
 
 public class MainSceneInfo : BaseSceneInfo
 {
     //private AREvidenceHolder EvidenceHolder;
-    public Camera ARMainCamera;
+    private XROrigin _xrOrigin;
+    private ARSession _arSession;
 
 	protected override void Init() // 상속 받은 Awake() 안에서 실행됨. "MainScene"씬 초기화
     {
@@ -15,9 +18,27 @@ public class MainSceneInfo : BaseSceneInfo
         SceneType = Define.Scene.MainScene;
         GameManager.UI.ShowSceneUI<UI_MainScene_SceneMenu>("MainScene_SceneMenu");
 
-        GameManager.Input.AddInputAction(ActiveEscapeKey);
+        /**
+        * 씬에서 XR 오리진, AR 세션을 찾음
+        * 없으면 직접 생성
+        */
+        Object obj = GameObject.FindObjectOfType(typeof(XROrigin));
+        if (obj == null)
+        {
+            obj = GameManager.Resource.Instantiate("XROrigin");
+            obj.name = "XROrigin";
+        }
+        _xrOrigin = ((GameObject)obj).GetComponent<XROrigin>();
 
-        ARMainCamera = Camera.main;
+        obj = GameObject.FindObjectOfType(typeof(ARSession));
+        if (obj == null)
+        {
+            obj = GameManager.Resource.Instantiate("ARSession");
+            obj.name = "ARSession";
+        }
+        _arSession = ((GameObject)obj).GetComponent<ARSession>();
+
+        GameManager.Input.AddInputAction(ActiveEscapeKey);
 
         //EvidenceHolder = GameObject.FindObjectOfType<AREvidenceHolder>();
 
@@ -57,13 +78,18 @@ public class MainSceneInfo : BaseSceneInfo
         }
     }
 
+    // AR 화면을 끔.
     public void SetCameraOff()
     {
-        ARMainCamera.enabled = false;
+        _xrOrigin.enabled = false;
+        _arSession.enabled = false;
     }
 
+    // AR 화면을 켬.
     public void SetCameraOn()
     {
-        ARMainCamera.enabled = true;
+        _xrOrigin.enabled = true;
+        _arSession.enabled = true;
+        _arSession.Reset();
     }
 }

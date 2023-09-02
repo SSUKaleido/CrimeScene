@@ -81,8 +81,8 @@ public class GameManager : MonoBehaviour
     */
     public static void Clear()
     {
-        Input.Clear();
         Scene.Clear();
+        Input.Clear();
         Sound.Clear();
         UI.Clear();
     }

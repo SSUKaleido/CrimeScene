@@ -8,8 +8,8 @@ using UnityEngine.XR.ARFoundation;
 public class MainSceneInfo : BaseSceneInfo
 {
     //private AREvidenceHolder EvidenceHolder;
-    private XROrigin _xrOrigin;
-    private ARSession _arSession;
+    private XROrigin _xrOrigin = null;
+    private ARSession _arSession = null;
 
 	protected override void Init() // 상속 받은 Awake() 안에서 실행됨. "MainScene"씬 초기화
     {
@@ -18,28 +18,10 @@ public class MainSceneInfo : BaseSceneInfo
         SceneType = Define.Scene.MainScene;
         GameManager.UI.ShowSceneUI<UI_MainScene_SceneMenu>("MainScene_SceneMenu");
 
-        /**
-        * 씬에서 XR 오리진, AR 세션을 찾음
-        * 없으면 직접 생성
-        */
-        Object obj = GameObject.FindObjectOfType(typeof(XROrigin));
-        if (obj == null)
-        {
-            obj = GameManager.Resource.Instantiate("XROrigin");
-            obj.name = "XROrigin";
-        }
-        _xrOrigin = ((GameObject)obj).GetComponent<XROrigin>();
-
-        obj = GameObject.FindObjectOfType(typeof(ARSession));
-        if (obj == null)
-        {
-            obj = GameManager.Resource.Instantiate("ARSession");
-            obj.name = "ARSession";
-        }
-        _arSession = ((GameObject)obj).GetComponent<ARSession>();
-
         GameManager.Input.AddInputAction(ActiveEscapeKey);
 
+        InitXRSession();
+        
         //EvidenceHolder = GameObject.FindObjectOfType<AREvidenceHolder>();
 
         /**
@@ -75,6 +57,35 @@ public class MainSceneInfo : BaseSceneInfo
                     SetCameraOn();
                 }
             }   
+        }
+    }
+
+    /**
+    * Init()에서 처리하면 아직 ARSession, XROrigin이 직렬화되지 않은 상황에서 코드를 처리하려 할 수 있음.
+    * 유니티 에디터에서는 작동하는 것 같아도 실제 모바일 빌드하면 동작 안하니 주의.
+    * XROrigin, ARSession은 반드시 프리펩으로 씬에 생성되어 있어야 함.
+    * 그렇지 않으면, 런타임 세션에서 초기화 처리해야 함. 방법 찾으면 수정 바람.
+    */
+    private void InitXRSession()
+    {
+        /**
+        * 씬에서 XR 오리진, AR 세션을 찾음
+        * 없으면 직접 생성
+        */
+        _xrOrigin = GameObject.FindObjectOfType<XROrigin>();
+        if (_xrOrigin == null)
+        {
+            GameObject obj = GameManager.Resource.Instantiate("XROrigin");
+            obj.name = "XROrigin";
+            _xrOrigin = obj.GetComponent<XROrigin>();
+        }
+
+        _arSession = GameObject.FindObjectOfType<ARSession>();
+        if (_arSession == null)
+        {
+            GameObject obj = GameManager.Resource.Instantiate("ARSession");
+            obj.name = "ARSession";
+            _arSession = obj.GetComponent<ARSession>();
         }
     }
 

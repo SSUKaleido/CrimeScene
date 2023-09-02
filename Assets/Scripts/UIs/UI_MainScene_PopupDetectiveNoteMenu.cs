@@ -14,7 +14,10 @@ public class UI_MainScene_PopupDetectiveNoteMenu : UI_Popup
 
     enum Buttons
     {
-        CancleButton
+        CancleButton,
+        CaseEntryButton,
+        InvestigationEntryButton,
+        DeductionEntryButton
     }
 
     enum Texts
@@ -44,10 +47,31 @@ public class UI_MainScene_PopupDetectiveNoteMenu : UI_Popup
         _mainSceneInfo = GameObject.FindWithTag("SceneInfo").GetComponent<MainSceneInfo>();
 
         GetButton((int)Buttons.CancleButton).gameObject.BindEvent(CloseThisPopupUI);
+        GetButton((int)Buttons.CaseEntryButton).gameObject.BindEvent(OnCaseEntryButton);
+        GetButton((int)Buttons.InvestigationEntryButton).gameObject.BindEvent(OnInvestigationEntryButton);
+        GetButton((int)Buttons.DeductionEntryButton).gameObject.BindEvent(OnDeductionEntryButton);
 	}
 
     new public void CloseThisPopupUI(PointerEventData data) {
         _mainSceneInfo.SetCameraOn();
+
+        string currentPopupMenuName = GameManager.UI.CurrentTopUI().GetType().ToString();
+        while (currentPopupMenuName != "PopupDetectiveNoteMenu") {
+            GameManager.UI.ClosePopupUI();
+            currentPopupMenuName = GameManager.UI.CurrentTopUI().GetType().ToString();
+        }
         GameManager.UI.ClosePopupUI(this);
+    }
+
+    public void OnCaseEntryButton(PointerEventData data) {
+        // 사건 항목 팝업 메뉴 띄우기
+    }
+
+    public void OnInvestigationEntryButton(PointerEventData data) {
+        // 조사 항목 팝업 메뉴 띄우기
+    }
+
+    public void OnDeductionEntryButton(PointerEventData data) {
+        // 추리 항목 팝업 메뉴 띄우기
     }
 }

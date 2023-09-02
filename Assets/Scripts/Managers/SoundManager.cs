@@ -45,9 +45,13 @@ public class SoundManager
         // 재생기 전부 재생 스탑, 음반 빼기
         foreach (AudioSource audioSource in _audioSources)
         {
+            if (audioSource == null)
+                break;
+            
             audioSource.clip = null;
             audioSource.Stop();
         }
+
         // 효과음 Dictionary 비우기
         _audioClips.Clear();
     }

@@ -27,6 +27,10 @@ public class MainSceneInfo : BaseSceneInfo
         /**
         * 그 외 기타 MainScene 로딩 코드는 여기다 추가하면 됨!
         */
+
+        #if UNITY_EDITOR
+            TestInstant();
+        #endif
 	}
 
     public override void Clear()
@@ -102,5 +106,10 @@ public class MainSceneInfo : BaseSceneInfo
         _xrOrigin.enabled = true;
         _arSession.enabled = true;
         _arSession.Reset();
+    }
+
+    private void TestInstant()
+    {
+        GameManager.Ingame.CreateEvidenceModel("FingerprintFilm");
     }
 }

@@ -9,14 +9,14 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     /** 인스턴스를 프로퍼티로 호출 **/
-    static GameManager _instace;  
+    static GameManager _instance;  
     public static GameManager Instance
     {
         get
         {
             // GameManager.cs의 start()가 실행되기 전에 다른 오브젝트가 인스턴스를 참조할 수 있으니 Init()
             Init();
-            return _instace;
+            return _instance;
         }
     }
 
@@ -25,17 +25,20 @@ public class GameManager : MonoBehaviour
     /** 프리펩 생성을 관리하는 ResourceManager **/
     ResourceManager _resource = new ResourceManager();
     /** 씬 로드를 관리하는 SceneLoadManager **/
-    SceneLoadManager _Scene = new SceneLoadManager();
+    SceneLoadManager _scene = new SceneLoadManager();
     /** 팝업 UI 생성, 파괴를 관리하는 UIPopupMangaer **/
     UIManager _UI = new UIManager();
     /** 사운드를 관리하는 SoundManager **/
-    SoundManager _Sound = new SoundManager();
+    SoundManager _sound = new SoundManager();
+    /** 인게임 정보 및 흐름을 관리하는 IngameManager **/
+    IngameManager _ingame = new IngameManager();
 
     public static InputManager Input { get { return Instance._input; } }
     public static ResourceManager Resource { get  { return Instance._resource; } }
-    public static SceneLoadManager Scene { get { return Instance._Scene; } }
+    public static SceneLoadManager Scene { get { return Instance._scene; } }
     public static UIManager UI { get { return Instance._UI; } }
-    public static SoundManager Sound { get { return Instance._Sound; } }
+    public static SoundManager Sound { get { return Instance._sound; } }
+    public static IngameManager Ingame { get { return Instance._ingame; } }
 
 
     /** 이 오브젝트가 생성되면 Init() 수행 **/
@@ -55,7 +58,7 @@ public class GameManager : MonoBehaviour
     static void Init()
     {
         // GameManager 인스턴스가 없을 경우
-        if (_instace == null)
+        if (_instance == null)
         {
             // 존재하는 GameManager 인스턴스를 찾음
             GameObject obj = GameObject.Find("GameManager");
@@ -71,7 +74,7 @@ public class GameManager : MonoBehaviour
             // 씬이 바뀌어도 파괴되지 않도록(싱글톤) DonDestroyOnLoad()
             DontDestroyOnLoad(obj);
             //인스턴스 할당
-            _instace = obj.GetComponent<GameManager>();
+            _instance = obj.GetComponent<GameManager>();
         }
     }
 

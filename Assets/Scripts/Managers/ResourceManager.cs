@@ -19,6 +19,15 @@ public class ResourceManager
     }
 
     /**
+    * 위 Load<T>()의 LoadAll 버전.
+    * multiple 스프라이트를 가져올 때 사용.
+    */
+    public T[] LoadAll<T>(string path) where T : Object
+    {
+        return Resources.LoadAll<T>(path);
+    }
+
+    /**
     * 사용자 지정 Instantiate 메서드
     * @param path 인스턴스화 할 오브젝트의 이름 Load<T>(string path) 메서드에서 알아서 경로를 찾아서 생성해줌
     */

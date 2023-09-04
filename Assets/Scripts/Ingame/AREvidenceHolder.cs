@@ -19,17 +19,10 @@ public class AREvidenceHolder : MonoBehaviour
     private GameObject HoldingEvidence = null;
     private float swipeSensitivity;
 
-    /** 추적한 마커에 따라 생성할 오브젝트를 정해주는 딕셔너리. key: 마커 이름 value: 생성할 프리펩의 파일 경로 */
-    private Dictionary<string, string> _evidenceDic = new Dictionary<string, string>();
-
     void Awake()
     {
         trackedEvidenceMarkerManager = gameObject.GetComponent<ARTrackedImageManager>();
         mainCamera = Camera.main;
-
-        // 임시로 칼레이도 아이콘 모델, 지문만 나오도록 함.
-        _evidenceDic.Add("KaleidoIcon", "KaleidoIconModel");
-        _evidenceDic.Add("FingerprintFilm", "Evidences/FingerprintFilm");
 
         Vector2 screenSize = new Vector2(Screen.width, Screen.height);
         swipeSensitivity = Mathf.Max(screenSize.x, screenSize.y) / 14f;
@@ -97,7 +90,7 @@ public class AREvidenceHolder : MonoBehaviour
         string markerName = trackedImage.referenceImage.name;
         _trackedImage = trackedImage;
         markerName = "FingerprintFilm"; // 나중에 이 줄 삭제
-        HoldingEvidence = GameManager.Resource.Instantiate(_evidenceDic[markerName]);
+        HoldingEvidence = GameManager.Ingame.CreateEvidenceModel(markerName);
 
         StopTrackEvidence(); // 이미지 마커 추적 그만
         StartHoldingEvidencePos();
@@ -110,7 +103,7 @@ public class AREvidenceHolder : MonoBehaviour
     private void RemoveHoldingEvidence()
     {
         if (HoldingEvidence != null)
-            Destroy(HoldingEvidence);
+            GameManager.Resource.Destroy(HoldingEvidence);
         HoldingEvidence = null;
         
         _trackedImage = null;

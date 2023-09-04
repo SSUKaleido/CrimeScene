@@ -1,0 +1,920 @@
+fileFormatVersion: 2
+guid: f3932acdc0654ab488efb41925d0f277
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 48
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Fingerprint_1-Example
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 860
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 592b731e94d16fc4f86a2465bca3375f
+      internalID: 1659896768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_1-1
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 860
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da80af887e3013748ae4fcd97ad9c508
+      internalID: -206553919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_1-2
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 860
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1f255049c66b674d8572c5ef9c5e227
+      internalID: 912879075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_1-3
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 860
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7807ba46d2ad934a878c1806d9f22fa
+      internalID: 1154238853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_1-4
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 860
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a60580602949f924a805d84ab6265159
+      internalID: 2051601945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_1-5
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 861
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fc7bed3fdff2824a83d8061f5e93959
+      internalID: 188145135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_2-Example
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 696
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce6d9743df9527a4c8d270370a81ee5e
+      internalID: -1208936659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_2-1
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 696
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea010b3c41c24364790398fc45ed78d6
+      internalID: 1805197885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_2-2
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 696
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 594f3edcdbf351b47951573fa97b9712
+      internalID: -1671547339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_2-3
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 696
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d9bbdb5eafa90e4fbb432188e6172c4
+      internalID: 49633285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_2-4
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 696
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9bfa637a356bfe409b6aeac700e9262
+      internalID: -1904935540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_2-5
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 696
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94ef6e2d500bf4342a912dcc48b8a1f7
+      internalID: -1138705874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_3-Example
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 532
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31d6755489f9b494e96dec620467f9b4
+      internalID: 670965209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_3-1
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 532
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9f3bebc63ca191488f6dd9ba606f378
+      internalID: -1421492750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_3-2
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 533
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 062d23ad832e1fd47b7eee5aa370e4fd
+      internalID: -21826375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_3-3
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 532
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26fc35ce6725e05408b8f49d43e9ce1b
+      internalID: -161190440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_3-4
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 532
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7f5e1c4e9af5d54fb2c8f79063abac6
+      internalID: 640826353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_3-5
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 532
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d66b08b8501e76d4ea8c148c4b640036
+      internalID: -112487618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_4-Example
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 368
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfd9e9dd4c0c9104297aa6af86935611
+      internalID: 239636769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_4-1
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 368
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81a1646e89d54db40a6f7ee7e587df29
+      internalID: 921746142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_4-2
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 368
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b41d2eb7f3e5e2c448cbe09555939a76
+      internalID: -905128463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_4-3
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 368
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb3ed90df7b95924f98ce9747904cd0e
+      internalID: 1645955135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_4-4
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 368
+        width: 94
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8965dc0d85e74954b8422a1bd207e39a
+      internalID: -1641515454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_4-5
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 368
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4461d99080b301c49b164eba1d95f1ac
+      internalID: 674045216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_5-Example
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 204
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 816818e3635085f4bbecd0a0f702aa68
+      internalID: 473328982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_5-1
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 204
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a3bebc7f2d029848997f7f25e149138
+      internalID: -1350017182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_5-2
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 204
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6e8ca7e7f53f414496175f9d06436aa
+      internalID: -1578379054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_5-3
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 204
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c2bdd078f9dccd41b68078f3416310c
+      internalID: 537567598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_5-4
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 204
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b5a36f4e7f93344bb1fa69e7ac26828
+      internalID: 1775912139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_5-5
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 204
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e3d59f5e55218d4f9f8e548ef0a3dda
+      internalID: 29813107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_6-1
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 40
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd88699127fd25e4d8b54920584ddcc5
+      internalID: 239489317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_6-2
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 40
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb56a716f30a85f4baf65232ff806578
+      internalID: 2009937332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_6-3
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 40
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0045c24d40a45f844aeb0ff956b9c525
+      internalID: -958701003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fingerprint_6-4
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 40
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a15b5017a575a84e89e20e3811efb71
+      internalID: -996480744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: bae9c071eb6cc6a46962d82ae23d7e03
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Fingerprint_1-1: -206553919
+      Fingerprint_1-2: 912879075
+      Fingerprint_1-3: 1154238853
+      Fingerprint_1-4: 2051601945
+      Fingerprint_1-5: 188145135
+      Fingerprint_1-Example: 1659896768
+      Fingerprint_2-1: 1805197885
+      Fingerprint_2-2: -1671547339
+      Fingerprint_2-3: 49633285
+      Fingerprint_2-4: -1904935540
+      Fingerprint_2-5: -1138705874
+      Fingerprint_2-Example: -1208936659
+      Fingerprint_3-1: -1421492750
+      Fingerprint_3-2: -21826375
+      Fingerprint_3-3: -161190440
+      Fingerprint_3-4: 640826353
+      Fingerprint_3-5: -112487618
+      Fingerprint_3-Example: 670965209
+      Fingerprint_4-1: 921746142
+      Fingerprint_4-2: -905128463
+      Fingerprint_4-3: 1645955135
+      Fingerprint_4-4: -1641515454
+      Fingerprint_4-5: 674045216
+      Fingerprint_4-Example: 239636769
+      Fingerprint_5-1: -1350017182
+      Fingerprint_5-2: -1578379054
+      Fingerprint_5-3: 537567598
+      Fingerprint_5-4: 1775912139
+      Fingerprint_5-5: 29813107
+      Fingerprint_5-Example: 473328982
+      Fingerprint_6-1: 239489317
+      Fingerprint_6-2: 2009937332
+      Fingerprint_6-3: -958701003
+      Fingerprint_6-4: -996480744
+      Fingerprint_Sprite_16: 988728370
+      Fingerprint_Sprite_17: -1888633552
+      Fingerprint_Sprite_18: 1924135324
+      Fingerprint_Sprite_19: 1424943135
+      Fingerprint_Sprite_21: 1673163215
+      Fingerprint_Sprite_27: -1963787583
+      Fingerprint_Sprite_29: -1834370897
+      Fingerprint_Sprite_33: -1117010994
+      Fingerprint_Sprite_34: 304784543
+      Fingerprint_Sprite_37: -161264272
+      Fingerprint_Sprite_38: 1494028286
+      Fingerprint_Sprite_45: -626958533
+      Fingerprint_Sprite_46: 860126183
+      Fingerprint_Sprite_47: -213198605
+      Fingerprint_Sprite_48: -1704713991
+      Fingerprint_Sprite_53: -1639536050
+      Fingerprint_Sprite_7: 837728834
+      Fingerprint_Sprite_8: -1024475886
+      Fingerprint_Sprite_9: -658284065
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

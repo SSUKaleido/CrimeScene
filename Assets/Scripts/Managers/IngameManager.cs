@@ -62,7 +62,7 @@ public class IngameManager
         /** 자식 오브젝트 지문 이미지를 생성하고 크기와 위치를 설정 **/
         GameObject fingerPrint = new GameObject("Fingerprint");
         fingerPrint.transform.SetParent(newEvidence.transform);
-        //fingerPrint.transform.localScale = new Vector3(0.002f, 0.002f, 1f);
+        fingerPrint.transform.localScale = new Vector3(0.1f, 0.1f, 1f);
         fingerPrint.transform.SetLocalPositionAndRotation(Camera.main.transform.forward * -0.011f, Quaternion.identity);
 
         /** 스프라이트 렌더러를 추가하고 스프라이트를 할당함 **/

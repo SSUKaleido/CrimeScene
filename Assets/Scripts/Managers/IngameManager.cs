@@ -7,12 +7,20 @@ using UnityEngine;
 */
 public class IngameManager
 {
+    /** 사건 정보가 들어있는 CrimeCaseData **/
+    CrimeCaseData _crimeCaseData = new CrimeCaseData();
+
     /** 추적한 마커에 따라 생성할 오브젝트를 정해주는 딕셔너리. key: 마커 이름 value: 생성할 프리펩의 이름 */
     private Dictionary<string, string> _evidenceAccordingMarkersDic = new Dictionary<string, string>();
     /** 추적한 마커에 따른 지문 이미지를 정해주는 딕셔너리. key: 마커 이름 value: 할당할 지문 번호 */
     private Dictionary<string, int> _fingerprintIndexCodeDic = new Dictionary<string, int>();
-    /** 이번 게임에서 사용하는 12개 3d 오브젝트를 관리하는 딕셔너리 **/
+    /** 이번 게임에서 사용하는 13개 3d 오브젝트를 관리하는 딕셔너리 **/
     private Dictionary<string, GameObject> _evidenceDic = new Dictionary<string, GameObject>();
+
+    public void LoadCrimeCaseData(string caseCode)
+    {
+        _crimeCaseData.LoadCrimeCase(caseCode);
+    }
 
     /**
     * 단서 오브젝트를 AREvidenceHolder에 반환.
@@ -73,10 +81,4 @@ public class IngameManager
 
         return newEvidence;
     }
-
-    /*
-    // 임시로 칼레이도 아이콘 모델, 지문만 나오도록 함.
-        _evidenceAccordingMarkersDic.Add("KaleidoIcon", "KaleidoIconModel");
-        _evidenceAccordingMarkersDic.Add("FingerprintFilm", "Evidences/FingerprintFilm");
-    */
 }

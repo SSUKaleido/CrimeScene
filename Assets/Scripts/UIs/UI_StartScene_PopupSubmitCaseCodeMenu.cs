@@ -56,7 +56,15 @@ public class UI_StartScene_PopupSubmitCaseCodeMenu : UI_Popup
     public void OnGameStartButton(PointerEventData data)
     {
         string inputedCaseCode = GetObject((int)GameObjects.CaseCodeInputField).GetComponent<TMP_InputField>().text;
+
+        if (CaseCodeChecker.CheckRightCaseCode(inputedCaseCode))
+        {
+            GameManager.Scene.LoadScene(Define.Scene.MainScene);
+        }
+        else
+        {
+            GetText((int)Texts.GuideText).text = "올바른 사건번호를 입력해주세요.";
+        }
         
-        GameManager.Scene.LoadScene(Define.Scene.MainScene);
     }
 }

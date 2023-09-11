@@ -8,6 +8,7 @@ public class Define
         Unknown, // 디폴트
         StartScene, // 시작 화면 씬
         MainScene, // 메인 게임 씬
+        ARCaptureScene // AR 단서 캡처 씬
     }
 
     public enum UIEvent
@@ -32,5 +33,23 @@ public class Define
         Bgm,
         Effect,
         MaxCount,  // 아무것도 아님. 그냥 Sound enum의 개수 세기 위해 추가. (0, 1, '2' 이렇게 2개) 
+    }
+
+    public enum ScenarioType
+    {
+        ConsertMurderCrime,
+        HospitalMurderCrime,
+        HighSchoolMurderCrime,
+        WeddingMurderCrime
+    }
+
+    public enum SuspectCode
+    {
+        DoNotSuspect,
+        Suspect1,
+        Suspect2,
+        Suspect3,
+        Suspect4,
+        Suspect5
     }
 }

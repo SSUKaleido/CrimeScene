@@ -67,29 +67,36 @@ public class UI_MainScene_PopupDeductionMenu : UI_Popup
 
     private void InitTexts()
     {
-        GetText((int)Texts.Suspect1NameText).text = "이름()";
-        GetText((int)Texts.Suspect2NameText).text = "이름()";
-        GetText((int)Texts.Suspect3NameText).text = "이름()";
-        GetText((int)Texts.Suspect1GenderText).text = "성별()";
-        GetText((int)Texts.Suspect2GenderText).text = "성별()";
-        GetText((int)Texts.Suspect3GenderText).text = "성별()";
-        GetText((int)Texts.Suspect1AgeText).text = "나이()";
-        GetText((int)Texts.Suspect2AgeText).text = "나이()";
-        GetText((int)Texts.Suspect3AgeText).text = "나이()";
-        GetText((int)Texts.Suspect1JopText).text = "직업()";
-        GetText((int)Texts.Suspect2JopText).text = "직업()";
-        GetText((int)Texts.Suspect3JopText).text = "직업()";
-        GetText((int)Texts.Suspect1RelationText).text = "관계()";
-        GetText((int)Texts.Suspect2RelationText).text = "관계()";
-        GetText((int)Texts.Suspect3RelationText).text = "관계()";
-        GetText((int)Texts.Suspect1SuitablityText).text = "적합성()";
-        GetText((int)Texts.Suspect2SuitablityText).text = "적합성()";
-        GetText((int)Texts.Suspect3SuitablityText).text = "적합성()";
-        GetText((int)Texts.Suspect1DetectiveFingerprintText).text = "지문()";
-        GetText((int)Texts.Suspect2DetectiveFingerprintText).text = "지문()";
-        GetText((int)Texts.Suspect3DetectiveFingerprintText).text = "지문()";
-        GetText((int)Texts.Suspect1MotivationText).text = "동기()";
-        GetText((int)Texts.Suspect2MotivationText).text = "동기()";
-        GetText((int)Texts.Suspect3MotivationText).text = "동기()";
+        List<SuspectInfo> _suspects = GameManager.Ingame.CaseData.GetSuspects();
+        string[] suspectGenders = { _suspects[0].GetGender() == "Male" ? "남성" : "여성",
+        _suspects[1].GetGender() == "Male" ? "남성" : "여성",
+        _suspects[2].GetGender() == "Male" ? "남성" : "여성" };
+
+        GetText((int)Texts.Suspect1NameText).text = _suspects[0].GetName();
+        GetText((int)Texts.Suspect2NameText).text = _suspects[1].GetName();
+        GetText((int)Texts.Suspect3NameText).text = _suspects[2].GetName();
+        GetText((int)Texts.Suspect1GenderText).text = suspectGenders[0];
+        GetText((int)Texts.Suspect2GenderText).text = suspectGenders[1];
+        GetText((int)Texts.Suspect3GenderText).text = suspectGenders[2];
+        GetText((int)Texts.Suspect1AgeText).text = _suspects[0].GetAge().ToString();
+        GetText((int)Texts.Suspect2AgeText).text = _suspects[1].GetAge().ToString();
+        GetText((int)Texts.Suspect3AgeText).text = _suspects[2].GetAge().ToString();
+        GetText((int)Texts.Suspect1JopText).text = _suspects[0].GetJop();
+        GetText((int)Texts.Suspect2JopText).text = _suspects[1].GetJop();
+        GetText((int)Texts.Suspect3JopText).text = _suspects[2].GetJop();
+        GetText((int)Texts.Suspect1RelationText).text = _suspects[0].GetRelationWithVictim();
+        GetText((int)Texts.Suspect2RelationText).text = _suspects[1].GetRelationWithVictim();
+        GetText((int)Texts.Suspect3RelationText).text = _suspects[2].GetRelationWithVictim();
+
+        DeductionPrograssData presentPrograssData = GameManager.Ingame.PrograssData;
+        presentPrograssData.SetSuitablityForDeduction(GetText((int)Texts.Suspect1SuitablityText), _suspects[0].GetSuspectCode());
+        presentPrograssData.SetSuitablityForDeduction(GetText((int)Texts.Suspect2SuitablityText), _suspects[1].GetSuspectCode());
+        presentPrograssData.SetSuitablityForDeduction(GetText((int)Texts.Suspect3SuitablityText), _suspects[2].GetSuspectCode());
+        presentPrograssData.SetDetectionFingerprintForDeduction(GetText((int)Texts.Suspect1DetectiveFingerprintText), _suspects[0].GetSuspectCode());
+        presentPrograssData.SetDetectionFingerprintForDeduction(GetText((int)Texts.Suspect2DetectiveFingerprintText), _suspects[1].GetSuspectCode());
+        presentPrograssData.SetDetectionFingerprintForDeduction(GetText((int)Texts.Suspect3DetectiveFingerprintText), _suspects[2].GetSuspectCode());
+        presentPrograssData.SetMotivationForDeduction(GetText((int)Texts.Suspect1MotivationText), _suspects[0].GetSuspectCode());
+        presentPrograssData.SetMotivationForDeduction(GetText((int)Texts.Suspect2MotivationText), _suspects[1].GetSuspectCode());
+        presentPrograssData.SetMotivationForDeduction(GetText((int)Texts.Suspect3MotivationText), _suspects[2].GetSuspectCode());
     }
 }

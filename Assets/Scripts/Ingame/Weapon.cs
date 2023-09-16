@@ -10,8 +10,8 @@ public class Weapon : Evidence
     List<int> laidFingerPrintSpriteCodes = new List<int>();
     Dictionary<SuspectCode, string> suitabilityForSuspects = new Dictionary<SuspectCode, string>();
 
-    const string strongSuitability = "매우 적합함";
-    const string weakSuitability = "약간 적합함";
+    public const string strongSuitability = "매우 적합함";
+    public const string weakSuitability = "약간 적합함";
 
     public Weapon(string inputName, string inputWoundType, List<SuspectCode> inputStrongsuitabilitySuspects)
     : base(inputName)

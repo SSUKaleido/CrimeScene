@@ -7,18 +7,23 @@ using UnityEngine;
 */
 public class IngameManager
 {
+
     /** 사건 정보가 들어있는 CrimeCaseData **/
-    private CrimeCaseData _crimeCaseData = new CrimeCaseData();
+    public CrimeCaseData CaseData = null;
     /** 게임 진행 상황을 저장하는 InvestigationPrograssData **/
-    private DeductionPrograssData _deductionPrograssData = new DeductionPrograssData();
+    public DeductionPrograssData PrograssData = null;
+
 
     /** 추적한 마커에 따라 생성할 오브젝트를 정해주는 딕셔너리. key: 마커 이름 value: 생성할 프리펩의 이름 */
     private Dictionary<string, Evidence> _evidenceAccordingMarkersDic = new Dictionary<string, Evidence>();
 
     public void LoadCrimeCaseData(string caseCode)
     {
-        _crimeCaseData.LoadCrimeCase(caseCode);
-        _deductionPrograssData.InitDeductotionData(_crimeCaseData);
+        CaseData = new CrimeCaseData();
+        CaseData.LoadCrimeCase(caseCode);
+
+        PrograssData = new DeductionPrograssData();
+        PrograssData.InitDeductotionData(CaseData);
     }
 
     /**
@@ -72,10 +77,5 @@ public class IngameManager
         fingerprintSpriteRenderer.drawMode = SpriteDrawMode.Simple;
 
         return newEvidence;
-    }
-
-    public CrimeCaseData GetCrimeCaseData()
-    {
-        return _crimeCaseData;
     }
 }

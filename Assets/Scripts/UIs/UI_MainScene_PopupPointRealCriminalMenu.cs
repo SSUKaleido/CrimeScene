@@ -63,10 +63,38 @@ public class UI_MainScene_PopupPointRealCriminalMenu : UI_Popup
 
         GetButton((int)Buttons.CancleButton).gameObject.BindEvent(CloseThisPopupUI);
         GetButton((int)Buttons.ConfirmPointButton).gameObject.BindEvent(OnConfirmPointButton);
+
+        InitTexts();
     }
 
     private void OnConfirmPointButton(PointerEventData data)
     {
 
+    }
+
+    private void InitTexts()
+    {
+        List<SuspectInfo> _suspects = GameManager.Ingame.CaseData.GetSuspects();
+
+        GetText((int)Texts.Suspect1NameText).text = _suspects[0].GetName();
+        GetText((int)Texts.Suspect2NameText).text = _suspects[1].GetName();
+        GetText((int)Texts.Suspect3NameText).text = _suspects[2].GetName();
+        GetText((int)Texts.Suspect1JopText).text = _suspects[0].GetJop();
+        GetText((int)Texts.Suspect2JopText).text = _suspects[1].GetJop();
+        GetText((int)Texts.Suspect3JopText).text = _suspects[2].GetJop();
+        GetText((int)Texts.Suspect1RelationText).text = _suspects[0].GetRelationWithVictim();
+        GetText((int)Texts.Suspect2RelationText).text = _suspects[1].GetRelationWithVictim();
+        GetText((int)Texts.Suspect3RelationText).text = _suspects[2].GetRelationWithVictim();
+
+        DeductionPrograssData presentPrograssData = GameManager.Ingame.PrograssData;
+        presentPrograssData.SetSuitablityForDeduction(GetText((int)Texts.Suspect1SuitablityText), _suspects[0].GetSuspectCode());
+        presentPrograssData.SetSuitablityForDeduction(GetText((int)Texts.Suspect2SuitablityText), _suspects[1].GetSuspectCode());
+        presentPrograssData.SetSuitablityForDeduction(GetText((int)Texts.Suspect3SuitablityText), _suspects[2].GetSuspectCode());
+        presentPrograssData.SetDetectionFingerprintForDeduction(GetText((int)Texts.Suspect1DetectiveFingerprintText), _suspects[0].GetSuspectCode());
+        presentPrograssData.SetDetectionFingerprintForDeduction(GetText((int)Texts.Suspect2DetectiveFingerprintText), _suspects[1].GetSuspectCode());
+        presentPrograssData.SetDetectionFingerprintForDeduction(GetText((int)Texts.Suspect3DetectiveFingerprintText), _suspects[2].GetSuspectCode());
+        presentPrograssData.SetMotivationForDeduction(GetText((int)Texts.Suspect1MotivationText), _suspects[0].GetSuspectCode());
+        presentPrograssData.SetMotivationForDeduction(GetText((int)Texts.Suspect2MotivationText), _suspects[1].GetSuspectCode());
+        presentPrograssData.SetMotivationForDeduction(GetText((int)Texts.Suspect3MotivationText), _suspects[2].GetSuspectCode());
     }
 }

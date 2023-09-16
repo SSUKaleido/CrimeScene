@@ -11,9 +11,9 @@ public class PropLoader
     Dictionary<ScenarioType, string> _motivationDispellingPropPerScenario;
     Dictionary<ScenarioType, List<string>> _propsPerScenario;
 
-    const string strongCrimeMotivation = "강한 범행 동기";
-    const string weakCrimeMotivation = "약한 범행 동기";
-    const string dispelledCrimeMotivation = "범행 의혹 불식";
+    public const string strongCrimeMotivation = "강한 범행 동기";
+    public const string weakCrimeMotivation = "약한 범행 동기";
+    public const string dispelledCrimeMotivation = "범행 의혹 불식";
 
     public PropLoader()
     {

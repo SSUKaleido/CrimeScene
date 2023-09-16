@@ -205,6 +205,11 @@ public class CrimeCaseData
         return caseName;
     }
 
+    public ScenarioType GetScenarioType()
+    {
+        return crimeCaseScenario;
+    }
+
     public VictimInfo GetVictim()
     {
         return victim;

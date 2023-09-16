@@ -57,6 +57,7 @@ public class UI_StartScene_PopupSubmitCaseCodeMenu : UI_Popup
 
         if (CaseCodeChecker.CheckRightCaseCode(inputedCaseCode))
         {
+            GameManager.Ingame.LoadCrimeCaseData(inputedCaseCode);
             GameManager.Scene.LoadScene(Define.Scene.MainScene);
         }
         else

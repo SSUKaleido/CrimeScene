@@ -65,5 +65,5 @@ public class Util {
 		if (component == null)
             component = go.AddComponent<T>();
         return component;
-	}
+    }
 }

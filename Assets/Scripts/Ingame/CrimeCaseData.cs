@@ -13,8 +13,8 @@ using System.IO;
 */
 public class CrimeCaseData
 {
-    public string caseCode;
-    public string caseName;
+    private string caseCode;
+    private string caseName;
 
     ScenarioType crimeCaseScenario;
     VictimInfo victim;
@@ -50,7 +50,7 @@ public class CrimeCaseData
         {
             suspects.Add(_scenarioLoader.LoadSuspect(crimeCaseScenario));
         }
-        List<(string, string)> suspectsFingerpints = _fingerprintLoader.CreateFingerprintSet();
+        List<(string, int)> suspectsFingerpints = _fingerprintLoader.CreateFingerprintSet();
         for (int i = 0; i < 3; i++)
         {
             suspects[i].SetFingerprintType(suspectsFingerpints[i].Item1);
@@ -120,7 +120,7 @@ public class CrimeCaseData
                 incluedFingerprintTypes.Add(fakeSuspects[0].GetFingerprintType());
             }
 
-            List<(string, string)> laidFingerprintInfo
+            List<(string, int)> laidFingerprintInfo
                 = _fingerprintLoader.CreateFingerprintSet(true, laidFingerprintNum, excluedFingerprintTypes, incluedFingerprintTypes);
             eachWeapon.SetFingerprint(laidFingerprintInfo);
         }
@@ -130,8 +130,8 @@ public class CrimeCaseData
         {
             if (i == 3)
             {
-                List<(string, string)> victimsFingerprintInfoList = _fingerprintLoader.CreateFingerprintSet(true, 1);
-                (string, string) victimsFingerprintInfo = victimsFingerprintInfoList[0];
+                List<(string, int)> victimsFingerprintInfoList = _fingerprintLoader.CreateFingerprintSet(true, 1);
+                (string, int) victimsFingerprintInfo = victimsFingerprintInfoList[0];
                 FingerprintMemory newFingerprintMemory = new FingerprintMemory("지문#4", victimsFingerprintInfo.Item2);
 
                 fingerprintMemories.Add(newFingerprintMemory);
@@ -193,6 +193,16 @@ public class CrimeCaseData
                 caseName = $"{victimCallName} 살인 사건";
                 break;
         }
+    }
+
+    public string GetCaseCode()
+    {
+        return caseCode;
+    }
+
+    public string GetCaseName()
+    {
+        return caseName;
     }
 
     public VictimInfo GetVictim()

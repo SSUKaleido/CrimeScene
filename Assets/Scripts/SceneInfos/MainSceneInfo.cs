@@ -31,13 +31,16 @@ public class MainSceneInfo : BaseSceneInfo
     * 그 외 다른 팝업 UI였다면 팝업 UI 닫음
     */ 
     public void ActiveEscapeKey() {
-        if (GameManager.UI.CurrentTopUI() is UI_MainScene_PopupPauseMenu)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            GameManager.Scene.LoadScene(Define.Scene.MainScene);
-        }
-        else
-        {
-            GameManager.UI.ShowPopupUI<UI_MainScene_PopupPauseMenu>("MainScene_PopupPhaseMenu");
+            if (GameManager.UI.CurrentTopUI() is UI_MainScene_PopupPauseMenu)
+            {
+                GameManager.Scene.LoadScene(Define.Scene.StartScene);
+            }
+            else
+            {
+                GameManager.UI.ShowPopupUI<UI_MainScene_PopupPauseMenu>("MainScene_PopupPauseMenu");
+            }
         }
     }
 }

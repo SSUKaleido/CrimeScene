@@ -13,7 +13,6 @@ public class UI_StartScene_PopupSubmitCaseCodeMenu : UI_Popup
 {
     enum Images
     {
-        PopupMenu
     }
 
     enum Buttons
@@ -24,7 +23,6 @@ public class UI_StartScene_PopupSubmitCaseCodeMenu : UI_Popup
 
     enum Texts
     {
-        TitleText,
         GuideText
     }
 
@@ -65,6 +63,5 @@ public class UI_StartScene_PopupSubmitCaseCodeMenu : UI_Popup
         {
             GetText((int)Texts.GuideText).text = "올바른 사건번호를 입력해주세요.";
         }
-        
     }
 }

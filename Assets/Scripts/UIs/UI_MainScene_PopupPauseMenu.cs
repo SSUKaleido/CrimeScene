@@ -9,7 +9,6 @@ public class UI_MainScene_PopupPauseMenu : UI_Popup
 {
     enum Images
     {
-        PopupMenu
     }
 
     enum Buttons
@@ -45,7 +44,8 @@ public class UI_MainScene_PopupPauseMenu : UI_Popup
         GetButton((int)Buttons.IngameExitButton).gameObject.BindEvent(OnIngameExitButton);
 	}
 
-    public void OnIngameExitButton(PointerEventData data) {
+    private void OnIngameExitButton(PointerEventData data)
+    {
         GameManager.Scene.LoadScene(Define.Scene.StartScene);
     }
 }

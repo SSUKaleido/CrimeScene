@@ -22,7 +22,7 @@ public class StartSceneInfo : BaseSceneInfo
 
     public override void Clear()
     {
-
+        GameManager.Input.RemoveInputAction(ActiveEscapeKey);
     }
 
     private bool ExitContinuityCheck = false;

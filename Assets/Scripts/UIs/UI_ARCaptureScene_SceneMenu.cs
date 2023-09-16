@@ -47,6 +47,6 @@ public class UI_ARCaptureScene_SceneMenu : UI_Scene
 	}
 
     public void OnResumeDeductionButton(PointerEventData data) {
-        GameManager.UI.ShowPopupUI<UI_MainScene_PopupPauseMenu>("MainScene_PopupPauseMenu");
+        GameManager.Scene.LoadScene(Define.Scene.MainScene);
     }
 }

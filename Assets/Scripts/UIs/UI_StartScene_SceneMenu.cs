@@ -44,7 +44,7 @@ public class UI_StartScene_SceneMenu : UI_Scene
         Bind<Button>(typeof(Buttons));
         Bind<TextMeshProUGUI>(typeof(Texts));
         Bind<Image>(typeof(Images));
-        //Bind<GameObject>(typeof(GameObjects));
+        Bind<GameObject>(typeof(GameObjects));
 
         // (확장 메서드) 버튼들에 UI_EvenetHandler를 붙이고 각 메서드를 등록한다.
         GetButton((int)Buttons.GameStartButton).gameObject.BindEvent(OnGameStartButton);
@@ -53,15 +53,15 @@ public class UI_StartScene_SceneMenu : UI_Scene
         GetButton((int)Buttons.SettingButton).gameObject.BindEvent(OnSettingButton);
 	}
 
-    public void OnGameStartButton(PointerEventData data) {
+    private void OnGameStartButton(PointerEventData data) {
         GameManager.UI.ShowPopupUI<UI_StartScene_PopupSubmitCaseCodeMenu>("StartScene_PopupSubmitCaseCodeMenu");
     }
 
-    public void OnGameCountinueButton(PointerEventData data) {
+    private void OnGameCountinueButton(PointerEventData data) {
         GameManager.UI.ShowPopupUI<UI_StartScene_PopupCountinueCaseMenu>("StartScene_PopupCountinueCaseMenu");
     }
 
-    public void OnGameExitButton(PointerEventData data) {
+    private void OnGameExitButton(PointerEventData data) {
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
         #else
@@ -69,7 +69,7 @@ public class UI_StartScene_SceneMenu : UI_Scene
         #endif
     }
 
-    public void OnSettingButton(PointerEventData data) {
+    private void OnSettingButton(PointerEventData data) {
         GameManager.UI.ShowPopupUI<UI_StartScene_PopupSettingMenu>("StartScene_PopupSettingMenu");
     }
 }

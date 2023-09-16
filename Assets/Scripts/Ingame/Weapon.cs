@@ -7,7 +7,7 @@ public class Weapon : Evidence
 {
     string woundType;
     List<string> laidFingerprints = new List<string>();
-    List<string> laidFingerPrintSpriteCodes = new List<string>();
+    List<int> laidFingerPrintSpriteCodes = new List<int>();
     Dictionary<SuspectCode, string> suitabilityForSuspects = new Dictionary<SuspectCode, string>();
 
     const string strongSuitability = "매우 적합함";
@@ -34,7 +34,7 @@ public class Weapon : Evidence
         }
     }
 
-    public void SetFingerprint(List<(string, string)> fingerprintInfo)
+    public void SetFingerprint(List<(string, int)> fingerprintInfo)
     {
         int fingerprintInfoCount = fingerprintInfo.Count;
 
@@ -54,7 +54,7 @@ public class Weapon : Evidence
         return laidFingerprints;
     }
 
-    public List<string> GetLaidFingerprintSpriteCodes()
+    public List<int> GetLaidFingerprintSpriteCodes()
     {
         return laidFingerPrintSpriteCodes;
     }

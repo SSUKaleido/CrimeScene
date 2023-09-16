@@ -8,18 +8,17 @@ using UnityEngine;
 public class IngameManager
 {
     /** 사건 정보가 들어있는 CrimeCaseData **/
-    CrimeCaseData _crimeCaseData = new CrimeCaseData();
+    private CrimeCaseData _crimeCaseData = new CrimeCaseData();
+    /** 게임 진행 상황을 저장하는 InvestigationPrograssData **/
+    private DeductionPrograssData _deductionPrograssData = new DeductionPrograssData();
 
     /** 추적한 마커에 따라 생성할 오브젝트를 정해주는 딕셔너리. key: 마커 이름 value: 생성할 프리펩의 이름 */
-    private Dictionary<string, string> _evidenceAccordingMarkersDic = new Dictionary<string, string>();
-    /** 추적한 마커에 따른 지문 이미지를 정해주는 딕셔너리. key: 마커 이름 value: 할당할 지문 번호 */
-    private Dictionary<string, int> _fingerprintIndexCodeDic = new Dictionary<string, int>();
-    /** 이번 게임에서 사용하는 13개 3d 오브젝트를 관리하는 딕셔너리 **/
-    private Dictionary<string, GameObject> _evidenceDic = new Dictionary<string, GameObject>();
+    private Dictionary<string, Evidence> _evidenceAccordingMarkersDic = new Dictionary<string, Evidence>();
 
     public void LoadCrimeCaseData(string caseCode)
     {
         _crimeCaseData.LoadCrimeCase(caseCode);
+        _deductionPrograssData.InitDeductotionData(_crimeCaseData);
     }
 
     /**
@@ -28,33 +27,26 @@ public class IngameManager
     * @param markerName 인식한 이미지 마커의 이름
     */
     public GameObject CreateEvidenceModel(string markerName)
-    {
-        // 이 if절 나중에 삭제
-        if (!_evidenceAccordingMarkersDic.ContainsKey(markerName))
-            _evidenceAccordingMarkersDic.Add(markerName, "FingerprintFilm");
-        
-        string evidenceName = _evidenceAccordingMarkersDic[markerName];
-        GameObject newEvidence = new GameObject { name = evidenceName };
+    {   
+        Evidence evidence = _evidenceAccordingMarkersDic[markerName];
+        string evidenceFileName = evidence.GetFilename();
+        GameObject newEvidence = new GameObject { name = evidence.GetName() };
         MeshFilter evidenceMeshFilter = newEvidence.AddComponent<MeshFilter>();
         MeshRenderer evidenceMeshRenderer = newEvidence.AddComponent<MeshRenderer>();
 
         /** 메쉬랑 매터리얼 로드해서 할당 **/
-        Mesh evidenceMesh = GameManager.Resource.Load<Mesh>($"Meshes/{evidenceName}_Mesh");
-        Material evidenceMaterial = GameManager.Resource.Load<Material>($"Materials/{evidenceName}_Material");
+        Mesh evidenceMesh = GameManager.Resource.Load<Mesh>($"Meshes/{evidenceFileName}_Mesh");
+        Material evidenceMaterial = GameManager.Resource.Load<Material>($"Materials/{evidenceFileName}_Material");
         evidenceMeshFilter.sharedMesh = evidenceMesh;
         evidenceMeshRenderer.material = evidenceMaterial;
 
         /** AR 오브젝트 리스트에 넣기. **/
-        _evidenceDic.Add(evidenceName, newEvidence);
+        //_evidenceDic.Add(evidenceName, evidence.G);
     
         // 지문일 경우 이미지 추가해주는 함수 넣기.
-        if (evidenceName == "FingerprintFilm")
-        {
-            // 이 if절 나중에 삭제
-            if (!_fingerprintIndexCodeDic.ContainsKey(markerName))
-                _fingerprintIndexCodeDic.Add(markerName, 5);
-            
-            newEvidence = CreateFingerprintImage(newEvidence, _fingerprintIndexCodeDic[markerName]);
+        if (evidence is FingerprintMemory)
+        {   
+            newEvidence = CreateFingerprintImage(newEvidence, (evidence as FingerprintMemory).GetFingerprintCode());
         }
 
         return newEvidence;
@@ -80,5 +72,10 @@ public class IngameManager
         fingerprintSpriteRenderer.drawMode = SpriteDrawMode.Simple;
 
         return newEvidence;
+    }
+
+    public CrimeCaseData GetCrimeCaseData()
+    {
+        return _crimeCaseData;
     }
 }

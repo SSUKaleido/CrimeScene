@@ -9,7 +9,7 @@ public class SuspectInfo : PersonInfo
     SuspectCode suspectCode;
     string relationWithVictim;
     string fingerprintType;
-    string fingerprintSpriteCode;
+    int fingerprintSpriteCode;
 
     public SuspectInfo(string inputName, string inputGender, int inputAge, string inputJop, SuspectCode inputSuspectCode, string inputRealation)
     : base(inputName, inputGender, inputAge, inputJop)
@@ -29,7 +29,7 @@ public class SuspectInfo : PersonInfo
         fingerprintType = inputFingerprintType;
     }
 
-    public void SetFingerprintSpriteCode(string inputFingerprintSpriteCode)
+    public void SetFingerprintSpriteCode(int inputFingerprintSpriteCode)
     {
         fingerprintSpriteCode = inputFingerprintSpriteCode;
     }
@@ -49,7 +49,7 @@ public class SuspectInfo : PersonInfo
         return fingerprintType;
     }
 
-    public string GetFingerprintSpriteCode()
+    public int GetFingerprintSpriteCode()
     {
         return fingerprintSpriteCode;
     }

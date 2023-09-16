@@ -502,7 +502,7 @@ GameObject:
   - component: {fileID: 5797412330327341665}
   - component: {fileID: 5697790907742920322}
   m_Layer: 5
-  m_Name: Suspect3DetectiveFingerprintText (2)
+  m_Name: Suspect3DetectiveFingerprintText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2050,9 +2050,9 @@ RectTransform:
   m_Father: {fileID: 2823667807950625077}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 370}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -590}
   m_SizeDelta: {x: 380, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9066594562194317897
@@ -2083,7 +2083,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -371071116, guid: 8ac78f83ee3dbce48940a56720b3d979, type: 3}
+  m_Sprite: {fileID: 162319165, guid: 74ebbfe5f2469a6479a884cb275895c0, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2950,7 +2950,7 @@ GameObject:
   - component: {fileID: 5575962518735543593}
   - component: {fileID: 2100831976185229156}
   m_Layer: 5
-  m_Name: Suspect2DetectiveFingerprintText (1)
+  m_Name: Suspect2DetectiveFingerprintText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3182,7 +3182,7 @@ GameObject:
   - component: {fileID: 7176401463424459094}
   - component: {fileID: 79039996818507860}
   - component: {fileID: 8433983604339191648}
-  - component: {fileID: 2093307484067329289}
+  - component: {fileID: 4435660297670816784}
   m_Layer: 5
   m_Name: MainScene_PopupDeductionMenu
   m_TagString: Untagged
@@ -3276,7 +3276,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &2093307484067329289
+--- !u!114 &4435660297670816784
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3285,7 +3285,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3810421467625919897}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ac41aaa7afa6ec4f8e350617b409cc7, type: 3}
+  m_Script: {fileID: 11500000, guid: 412583fe4b7bc174e95e09f6a914c530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3908820692997437531
@@ -4517,10 +4517,10 @@ RectTransform:
   m_Father: {fileID: 2823667807950625077}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -170}
-  m_SizeDelta: {x: 800, y: 900}
+  m_SizeDelta: {x: -280, y: -1020}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6365248885819467712
 CanvasRenderer:
@@ -5839,10 +5839,10 @@ RectTransform:
   m_Father: {fileID: 2823667807950625077}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -100}
-  m_SizeDelta: {x: 900, y: 1140}
+  m_SizeDelta: {x: -180, y: -780}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &299303683935771522
 CanvasRenderer:
@@ -5872,7 +5872,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 541471641, guid: 8ac78f83ee3dbce48940a56720b3d979, type: 3}
+  m_Sprite: {fileID: 1109402657, guid: 1a6c4567ff731d74897c047f37e0669e, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1

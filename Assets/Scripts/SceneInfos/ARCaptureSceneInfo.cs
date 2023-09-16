@@ -14,7 +14,7 @@ public class ARCaptureSceneInfo : BaseSceneInfo
     {
         base.Init(); // BaseScene의 Init()
 
-        SceneType = Define.Scene.MainScene;
+        SceneType = Define.Scene.ARCaptureScene;
         GameManager.UI.ShowSceneUI<UI_ARCaptureScene_SceneMenu>("ARCaptureScene_SceneMenu");
 
         GameManager.Input.AddInputAction(ActiveEscapeKey);
@@ -35,8 +35,27 @@ public class ARCaptureSceneInfo : BaseSceneInfo
     * 취소 키 입력받았을 때 반응
     * 두 번 연속 입력하면? MainScene으로
     */ 
-    public void ActiveEscapeKey() {
-        GameManager.Scene.LoadScene(Define.Scene.MainScene);
+    private bool ExitContinuityCheck = false;
+    public void ActiveEscapeKey()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (ExitContinuityCheck == false)
+            {
+                StartCoroutine(SwitchEscapeContinuity());
+            }
+            else
+            {
+                GameManager.Scene.LoadScene(Define.Scene.MainScene);
+            }
+        }
+    }
+
+    private IEnumerator SwitchEscapeContinuity()
+    {
+        ExitContinuityCheck = true;
+        yield return new WaitForSeconds(1.5f);
+        ExitContinuityCheck = false;
     }
 
     /**

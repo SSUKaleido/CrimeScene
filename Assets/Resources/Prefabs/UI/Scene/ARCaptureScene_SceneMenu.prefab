@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 26951186754071828}
   - component: {fileID: 2945961646989617739}
   - component: {fileID: 3954084980539922976}
+  - component: {fileID: 5878456220908889049}
   m_Layer: 5
   m_Name: ARCaptureScene_SceneMenu
   m_TagString: Untagged
@@ -103,6 +104,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5878456220908889049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4612378249286627634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3fcc9ec16ab58a4c97bac6dd10654a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4724173620825176883
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,9 +150,9 @@ RectTransform:
   m_Father: {fileID: 8699857747169105709}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -800}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 160}
   m_SizeDelta: {x: 460, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3296378713146910686
@@ -170,7 +183,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -7503603, guid: 8ac78f83ee3dbce48940a56720b3d979, type: 3}
+  m_Sprite: {fileID: 1567111834, guid: 1a6c4567ff731d74897c047f37e0669e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

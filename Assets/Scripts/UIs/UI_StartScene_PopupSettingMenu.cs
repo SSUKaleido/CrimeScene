@@ -13,7 +13,6 @@ public class UI_StartScene_PopupSettingMenu : UI_Popup
 {
     enum Images
     {
-        PopupMenu
     }
 
     enum Buttons
@@ -42,7 +41,7 @@ public class UI_StartScene_PopupSettingMenu : UI_Popup
         Bind<Button>(typeof(Buttons));
         Bind<TextMeshProUGUI>(typeof(Texts));
         Bind<Image>(typeof(Images));
-        //Bind<GameObject>(typeof(GameObjects));
+        Bind<GameObject>(typeof(GameObjects));
 
         // (확장 메서드) CancleButton에 UI_EvenetHandler를 붙이고 OnCalcleButton 메서드를 등록한다.
         GetButton((int)Buttons.CancleButton).gameObject.BindEvent(CloseThisPopupUI);

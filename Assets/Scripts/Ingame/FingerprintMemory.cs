@@ -5,17 +5,17 @@ using SuspectCode = Define.SuspectCode;
 
 public class FingerprintMemory : Evidence
 {
-    string fingerPrintCode;
+    int fingerPrintCode;
     SuspectCode suspectCode;
 
-    public FingerprintMemory(string inputName, string inputFingerprintCode, SuspectCode inputSuspectCode = SuspectCode.DoNotSuspect)
+    public FingerprintMemory(string inputName, int inputFingerprintCode, SuspectCode inputSuspectCode = SuspectCode.DoNotSuspect)
     : base(inputName)
     {
         fingerPrintCode = inputFingerprintCode;
         suspectCode = inputSuspectCode;
     }
 
-    public string GetFingerprintCode()
+    public int GetFingerprintCode()
     {
         return fingerPrintCode;
     }

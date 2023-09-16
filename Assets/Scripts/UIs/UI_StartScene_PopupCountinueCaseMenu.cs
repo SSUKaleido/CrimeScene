@@ -9,7 +9,6 @@ public class UI_StartScene_PopupCountinueCaseMenu : UI_Popup
 {
     enum Images
     {
-        PopupMenu
     }
 
     enum Buttons

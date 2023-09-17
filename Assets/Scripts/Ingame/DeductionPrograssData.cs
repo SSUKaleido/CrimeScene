@@ -16,15 +16,13 @@ public class DeductionPrograssData
     /* 사건코드, 사건코드가 있으면 모든 게임 진행 상황의 로드할 수 있음 */
     private string caseCode;
 
-    /** 인 게임에서 발견한 단서들의 프리펩을 저장해놓는 릭셔너리 **/
-    private Dictionary<string, GameObject> EvidencePrefabs = new Dictionary<string, GameObject>();
+    /** 현재 플레이어가 단서들을 발견했는지 여부 **/
+    private List<byte> IsFindEvidences = new List<byte>(13) { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
     /** 현재 플레이어가 진짜 흉기로 의심 중인 무기 **/
     private Weapon suspectedWeapon = null;
-
     /** 각 흉기 후보들 간의 지문 검출 현황을 저장해놓는 딕셔너리 **/
     private Dictionary<Weapon, Dictionary<SuspectCode, bool>> IsDetectiveFingerprintFromWeapons = new Dictionary<Weapon, Dictionary<SuspectCode, bool>>();
-
     /** 각 용의자들의 범행 동기 추정 현황을 저장해놓는 딕셔너리 **/
     private Dictionary<SuspectCode, string> suspectedMotivation = new Dictionary<SuspectCode, string>();
 
@@ -52,6 +50,29 @@ public class DeductionPrograssData
             }
 
             IsDetectiveFingerprintFromWeapons.Add(eachWepon, temp);
+        }
+    }
+
+    public void FindNewEvidence(Evidence newEvidence)
+    {
+        List<Evidence> evidences = GameManager.Ingame.CaseData.GetEvidences();
+
+        for (int i = 0; i < 13; i++)
+        {
+            if (evidences[i] == newEvidence)
+            {
+                IsFindEvidences[i] = 255;
+                break;
+            }
+        }
+
+        if (newEvidence is MotivationExplainProp)
+        {
+            MotivationExplainProp newMotivationProp = newEvidence as MotivationExplainProp;
+            SuspectCode explainSuspect = ((MotivationExplainProp)newEvidence).GetExplainingSuspect();
+            string explainMotivation = ((MotivationExplainProp)newEvidence).GetMotivation();
+
+            suspectedMotivation.Add(explainSuspect, explainMotivation);
         }
     }
 
@@ -127,5 +148,22 @@ public class DeductionPrograssData
                 targetText.color = colorCode["Green"];
                 break;
         }
+    }
+
+    public void SetSuspectedWeapon(Weapon inputWeapon)
+    {
+        suspectedWeapon = inputWeapon;
+    }
+
+    public Weapon GetSuspectedWeapon()
+    {
+        return suspectedWeapon;
+    }
+
+    public bool CheckFindEvidences(int index)
+    {
+        if (IsFindEvidences[index] == 255)
+            return true;
+        return false;
     }
 }

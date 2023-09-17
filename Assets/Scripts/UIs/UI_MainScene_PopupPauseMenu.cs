@@ -14,7 +14,8 @@ public class UI_MainScene_PopupPauseMenu : UI_Popup
     enum Buttons
     {
         CancleButton,
-        IngameExitButton
+        IngameExitButton,
+        DebugButton
     }
 
     enum Texts
@@ -42,10 +43,29 @@ public class UI_MainScene_PopupPauseMenu : UI_Popup
 
         GetButton((int)Buttons.CancleButton).gameObject.BindEvent(CloseThisPopupUI);
         GetButton((int)Buttons.IngameExitButton).gameObject.BindEvent(OnIngameExitButton);
+        GetButton((int)Buttons.DebugButton).gameObject.BindEvent(OnDebugButton);
 	}
 
     private void OnIngameExitButton(PointerEventData data)
     {
         GameManager.Scene.LoadScene(Define.Scene.StartScene);
+    }
+
+    private void OnDebugButton(PointerEventData data)
+    {
+        List<Evidence> evidences = GameManager.Ingame.CaseData.GetEvidences();
+        GameManager.Ingame.PrograssData.FindNewEvidence(evidences[0]);
+        GameManager.Ingame.PrograssData.FindNewEvidence(evidences[1]);
+        GameManager.Ingame.PrograssData.FindNewEvidence(evidences[2]);
+        GameManager.Ingame.PrograssData.FindNewEvidence(evidences[3]);
+        GameManager.Ingame.PrograssData.FindNewEvidence(evidences[4]);
+        GameManager.Ingame.PrograssData.FindNewEvidence(evidences[5]);
+        GameManager.Ingame.PrograssData.FindNewEvidence(evidences[6]);
+        GameManager.Ingame.PrograssData.FindNewEvidence(evidences[7]);
+        GameManager.Ingame.PrograssData.FindNewEvidence(evidences[8]);
+        GameManager.Ingame.PrograssData.FindNewEvidence(evidences[9]);
+        GameManager.Ingame.PrograssData.FindNewEvidence(evidences[10]);
+        GameManager.Ingame.PrograssData.FindNewEvidence(evidences[11]);
+        GameManager.Ingame.PrograssData.FindNewEvidence(evidences[12]);
     }
 }

@@ -25,7 +25,7 @@ public class AREvidenceHolder : MonoBehaviour
         mainCamera = Camera.main;
 
         Vector2 screenSize = new Vector2(Screen.width, Screen.height);
-        swipeSensitivity = Mathf.Max(screenSize.x, screenSize.y) / 14f;
+        swipeSensitivity = Mathf.Max(screenSize.x, screenSize.y) / 10f;
 
         StartTrackEvidence();
     }
@@ -88,11 +88,12 @@ public class AREvidenceHolder : MonoBehaviour
         
         /** 새 홀딩 프리펩을 생성 */
         string markerName = trackedImage.referenceImage.name;
+        Evidence newEvidence = GameManager.Ingame.GetEvidencePerMarker(markerName);
+        HoldingEvidence = GameManager.Ingame.CreateEvidenceModel(newEvidence);
         _trackedImage = trackedImage;
-        markerName = "FingerprintFilm"; // 나중에 이 줄 삭제
-        HoldingEvidence = GameManager.Ingame.CreateEvidenceModel(markerName);
 
         StopTrackEvidence(); // 이미지 마커 추적 그만
+        GameManager.Ingame.PrograssData.FindNewEvidence(newEvidence);
         StartHoldingEvidencePos();
         GameManager.Input.AddInputAction(TouchControlEvidence);
     }
@@ -120,7 +121,8 @@ public class AREvidenceHolder : MonoBehaviour
     private Vector2 beganTouchPos;
     private Vector2 curTouchPos;
     private bool isNowSwiping = false;
-    private bool DoubleClickCheck = false;
+    private bool doubleClickCheck = false;
+    private const float doubleTouchDelay = 0.1f;
     /**
     * 화면 스와이프 단서 회전과 더블 클릭 단서 제거를 담당하는 메서드
     * 이 메서드는 GameManager.Input에 등록되어야 함.
@@ -139,24 +141,33 @@ public class AREvidenceHolder : MonoBehaviour
             */
             switch (inputTouch.phase)
             {
-                case TouchPhase.Began : {
+                case TouchPhase.Began :
+                {
                     /** 스와이프 중 중복 입력을 막기 위해 break; */
                     if (isNowSwiping == true)
                         break;
                     
+                    Debug.Log(0);
                     /** 더블 클릭 코루틴 구절 */
-                    if (DoubleClickCheck == false)
+                    if (doubleClickCheck == false)
+                    {
                         StartCoroutine(SwitchDoubleClick());
+                    }
                     else
+                    {
                         RemoveHoldingEvidence();
+                        doubleClickCheck = false;
+                    }
                     
                     beganTouchPos = inputTouch.position;
 
                     break;
                 }
-                case TouchPhase.Moved : {
-                    if (isNowSwiping == true)
+                case TouchPhase.Moved :
+                {
+                    if (isNowSwiping)
                     {
+                        Debug.Log("Swiping!");
                         Vector3 deltaPos = inputTouch.deltaPosition;
                         Vector3 rotationAxis = mainCamera.transform.right * deltaPos.y - mainCamera.transform.up * deltaPos.x;
                         HoldingEvidence.transform.Rotate(rotationAxis, Space.World);
@@ -173,7 +184,8 @@ public class AREvidenceHolder : MonoBehaviour
 
                     break;
                 }
-                case TouchPhase.Ended : {
+                case TouchPhase.Ended :
+                {
                     isNowSwiping = false;
                     break;
                 }
@@ -181,12 +193,12 @@ public class AREvidenceHolder : MonoBehaviour
         }
     }
 
-    private const float doubleTouchDelay = 0.2f;
     private IEnumerator SwitchDoubleClick()
     {
-        DoubleClickCheck = true;
+        doubleClickCheck = true;
         yield return new WaitForSeconds(doubleTouchDelay);
-        DoubleClickCheck = false;
+        doubleClickCheck = false;
+        yield break;
     }
 
     private IEnumerator UpdateHoldingEvidencePos()

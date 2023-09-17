@@ -136,6 +136,7 @@ public class FilenameLoader
     public string GetFlavorText(Evidence evidence, List<SuspectInfo> explainingSuspectCandidate)
     {
         string flavorText = flavorTextDictionary[evidence.GetName()];
+
         if (evidence is MotivationExplainProp)
         {
             MotivationExplainProp motivationExplainProp = evidence as MotivationExplainProp;
@@ -145,7 +146,7 @@ public class FilenameLoader
             {
                 if (eachSuspect.GetSuspectCode() == explainingSuspectCode)
                 {
-                    flavorText.Replace("(SuspectName)", eachSuspect.GetName());
+                    flavorText = flavorText.Replace("(SuspectName)", eachSuspect.GetName());
                     break;
                 }
             }

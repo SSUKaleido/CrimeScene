@@ -7,8 +7,16 @@ using TMPro;
 
 public class UI_MainScene_SceneMenu : UI_Scene
 {
+    int currnetMenuButtonIndex = 3;
+    List<Image> MenuButtons = new List<Image>();
+    Sprite[] MenuButtonSprites;
+
     enum Images
     {
+        CaseMenuButton,
+        InvestigationMenuButton,
+        DeductionMenuButton,
+        EncyclopediaMenuButton
     }
 
     enum Buttons
@@ -55,30 +63,61 @@ public class UI_MainScene_SceneMenu : UI_Scene
         GetButton((int)Buttons.PointRealCriminalButton).gameObject.BindEvent(OnPointRealCriminalButton);
         GetButton((int)Buttons.SearchEvidenceButton).gameObject.BindEvent(OnSearchEvidenceButton);
         GetButton((int)Buttons.PauseButton).gameObject.BindEvent(OnPauseButton);
+
+        MenuButtons.Add(GetImage((int)Images.CaseMenuButton));
+        MenuButtons.Add(GetImage((int)Images.InvestigationMenuButton));
+        MenuButtons.Add(GetImage((int)Images.DeductionMenuButton));
+        MenuButtons.Add(GetImage((int)Images.EncyclopediaMenuButton));
+        MenuButtonSprites = GameManager.Resource.LoadAll<Sprite>("Sprites/GUI3");
+
+        InitTexts();
 	}
 
     private void OnCaseMenuButton(PointerEventData data)
     {
         GameManager.UI.CloseAllPopupUI();
         GameManager.UI.ShowPopupUI<UI_MainScene_PopupCaseMenu>("MainScene_PopupCaseMenu");
+        ChangeMenuImage(0);
     }
 
     private void OnInvestigationMenuButton(PointerEventData data)
     {
         GameManager.UI.CloseAllPopupUI();
         GameManager.UI.ShowPopupUI<UI_MainScene_PopupInvestigationMenu>("MainScene_PopupInvestigationMenu");
+        ChangeMenuImage(1);
     }
 
     private void OnDeductionMenuButton(PointerEventData data)
     {
         GameManager.UI.CloseAllPopupUI();
         GameManager.UI.ShowPopupUI<UI_MainScene_PopupDeductionMenu>("MainScene_PopupDeductionMenu");
+        ChangeMenuImage(2);
     }
 
     private void OnEncyclopediaMenuButton(PointerEventData data)
     {
         GameManager.UI.CloseAllPopupUI();
         GameManager.UI.ShowPopupUI<UI_MainScene_PopupEncyclopediaMenu>("MainScene_PopupEncyclopediaMenu");
+        ChangeMenuImage(3);
+    }
+
+    private void ChangeMenuImage(int nextMenuButtonIndex)
+    {
+        switch (currnetMenuButtonIndex)
+        {
+            case 0 : MenuButtons[0].sprite = MenuButtonSprites[0]; break;
+            case 1 : MenuButtons[1].sprite = MenuButtonSprites[3]; break;
+            case 2 : MenuButtons[2].sprite = MenuButtonSprites[1]; break;
+            case 3 : MenuButtons[3].sprite = MenuButtonSprites[2]; break;
+        }
+        switch (nextMenuButtonIndex)
+        {
+            case 0 : MenuButtons[0].sprite = MenuButtonSprites[4]; break;
+            case 1 : MenuButtons[1].sprite = MenuButtonSprites[7]; break;
+            case 2 : MenuButtons[2].sprite = MenuButtonSprites[5]; break;
+            case 3 : MenuButtons[3].sprite = MenuButtonSprites[6]; break;
+        }
+        currnetMenuButtonIndex = nextMenuButtonIndex;
     }
 
     private void OnPointRealCriminalButton(PointerEventData data)
@@ -94,5 +133,11 @@ public class UI_MainScene_SceneMenu : UI_Scene
     private void OnPauseButton(PointerEventData data)
     {
         GameManager.UI.ShowPopupUI<UI_MainScene_PopupPauseMenu>("MainScene_PopupPauseMenu");
+    }
+
+    private void InitTexts()
+    {
+        GetText((int)Texts.CaseCodeText).text = "사건 코드: " + GameManager.Ingame.CaseData.GetCaseCode();
+        GetText((int)Texts.CaseNameText).text = "사건명: " + GameManager.Ingame.CaseData.GetCaseName();
     }
 }

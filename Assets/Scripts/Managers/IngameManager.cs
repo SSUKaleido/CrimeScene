@@ -13,10 +13,14 @@ public class IngameManager
     /** 게임 진행 상황을 저장하는 InvestigationPrograssData **/
     public DeductionPrograssData PrograssData = null;
 
-
-    /** 추적한 마커에 따라 생성할 오브젝트를 정해주는 딕셔너리. key: 마커 이름 value: 생성할 프리펩의 이름 */
-    private Dictionary<string, Evidence> _evidenceAccordingMarkersDic = new Dictionary<string, Evidence>();
-
+    /** 추적한 마커에 따라 생성할 오브젝트를 정해주는 딕셔너리. key: 마커 이름 value: 생성할 프리펩의 이름 **/
+    private Dictionary<string, Evidence> _evidenceAccordingMarkers = new Dictionary<string, Evidence>();
+    
+    /**
+    * 사건 코드에 따라 게임 정보를 초기화
+    * 케이스데이터를 로드하고 새 
+    * @parma caseCode 입력받은 사건 코드
+    */
     public void LoadCrimeCaseData(string caseCode)
     {
         CaseData = new CrimeCaseData();
@@ -24,16 +28,34 @@ public class IngameManager
 
         PrograssData = new DeductionPrograssData();
         PrograssData.InitDeductotionData(CaseData);
+
+        LinkMarkerToEvidence();
     }
 
-    /**
-    * 단서 오브젝트를 AREvidenceHolder에 반환.
-    * 빈 오브젝트를 생성해서 MeshFilter, MeshRenderer 등을 붙여 단서로 만듬
-    * @param markerName 인식한 이미지 마커의 이름
-    */
-    public GameObject CreateEvidenceModel(string markerName)
+    private void LinkMarkerToEvidence()
+    {
+        List<Evidence> evidences = CaseData.GetEvidences();
+        for (int i = 1; i <= 13; i++)
+        {
+            string markerName = $"Marker_{i}";
+            _evidenceAccordingMarkers.Add(markerName, evidences[i - 1]);
+        }
+    }
+
+    public Evidence GetEvidencePerMarker(string markerName)
     {   
-        Evidence evidence = _evidenceAccordingMarkersDic[markerName];
+        return _evidenceAccordingMarkers[markerName];
+    }
+
+    public GameObject CreateEvidenceModel(Evidence evidence)
+    {   
+        /** 한 번 발견했던 프리펩은 쉽게 인스턴스?
+        if (EvidencePrefabs.ContainsKey(evidence.GetName()))
+        {
+            GameObject existingEvidence = GameManager.Resource.Instantiate(EvidencePrefabs[evidence.GetName()]);
+            return existingEvidence;
+        } **/
+
         string evidenceFileName = evidence.GetFilename();
         GameObject newEvidence = new GameObject { name = evidence.GetName() };
         MeshFilter evidenceMeshFilter = newEvidence.AddComponent<MeshFilter>();
@@ -44,9 +66,6 @@ public class IngameManager
         Material evidenceMaterial = GameManager.Resource.Load<Material>($"Materials/{evidenceFileName}_Material");
         evidenceMeshFilter.sharedMesh = evidenceMesh;
         evidenceMeshRenderer.material = evidenceMaterial;
-
-        /** AR 오브젝트 리스트에 넣기. **/
-        //_evidenceDic.Add(evidenceName, evidence.G);
     
         // 지문일 경우 이미지 추가해주는 함수 넣기.
         if (evidence is FingerprintMemory)
@@ -62,7 +81,7 @@ public class IngameManager
     * @param newEvidence 생성하고 있는 지문 필름 오브젝트
     * @param fingerprintCode 생성하고
     */
-    private GameObject CreateFingerprintImage(GameObject newEvidence, int fingerprintCode)
+    public GameObject CreateFingerprintImage(GameObject newEvidence, int fingerprintCode)
     {
         /** 자식 오브젝트 지문 이미지를 생성하고 크기와 위치를 설정 **/
         GameObject fingerPrint = new GameObject("Fingerprint");

@@ -167,7 +167,7 @@ public class CrimeCaseData
         for (int i = 0; i < 13; i++)
         {
             evidences[i].SetFileName(_filenameLoader.GetFilename(evidences[i].GetName()));
-            evidences[i].SetFlavorText(_filenameLoader.GetFlavorText(evidences[i], fakeSuspects));
+            evidences[i].SetFlavorText(_filenameLoader.GetFlavorText(evidences[i], suspects));
         }
     }
 

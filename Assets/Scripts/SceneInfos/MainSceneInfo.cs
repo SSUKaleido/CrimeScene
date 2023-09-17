@@ -72,7 +72,7 @@ public class MainSceneInfo : BaseSceneInfo
             
             renderObject.transform.SetParent(Root.transform);
             renderCamera.transform.SetParent(Root.transform);
-            renderObject.transform.SetPositionAndRotation(objPos, Quaternion.identity);
+            renderObject.transform.SetPositionAndRotation(objPos, Quaternion.Euler(15f, 30f, 0));
             renderObject.transform.localScale = EvidenceScaleAtSlot;
             renderCamera.transform.SetPositionAndRotation(objPos + new Vector3(0f, 0f, -5f), Quaternion.identity);
 

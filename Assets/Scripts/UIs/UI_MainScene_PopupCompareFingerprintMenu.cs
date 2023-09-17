@@ -5,11 +5,16 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
-
 public class UI_MainScene_PopupCompareFingerprintMenu : UI_Popup
 {
     Image suspectsFingerprint = null;
     Image weaponsFingerprint = null;
+    TextMeshProUGUI suspectFingerprintExplainText = null;
+    TextMeshProUGUI weaponFingerprintExplainText = null;
+    TextMeshProUGUI detectionFingerprintText = null;
+
+    int weaponFingerprintIndex = 0;
+    int suspectFingerprintIndex = 0;
 
     enum Images
     {
@@ -21,8 +26,8 @@ public class UI_MainScene_PopupCompareFingerprintMenu : UI_Popup
     {
         BeforeSuspectFingerprintButton,
         NextSuspectFingerprintButton,
-        BeforeSWeaponFingerprintButton,
-        NextSWeaponFingerprintButton,
+        BeforeWeaponFingerprintButton,
+        NextWeaponFingerprintButton,
         ChangeDetectionFingerprintButton,
         CancleButton
     }
@@ -53,34 +58,98 @@ public class UI_MainScene_PopupCompareFingerprintMenu : UI_Popup
         Bind<Image>(typeof(Images));
         Bind<GameObject>(typeof(GameObjects));
 
+        GetButton((int)Buttons.CancleButton).gameObject.BindEvent(CloseThisPopupUI);
+        GetButton((int)Buttons.BeforeSuspectFingerprintButton).gameObject.BindEvent(OnBeforeSuspectFingerprintButton);
+        GetButton((int)Buttons.NextSuspectFingerprintButton).gameObject.BindEvent(OnNextSuspectFingerprintButton);
+        GetButton((int)Buttons.BeforeWeaponFingerprintButton).gameObject.BindEvent(OnBeforeSWeaponFingerprintButton);
+        GetButton((int)Buttons.NextWeaponFingerprintButton).gameObject.BindEvent(OnNextSWeaponFingerprintButton);
+        GetButton((int)Buttons.ChangeDetectionFingerprintButton).gameObject.BindEvent(OnChangeDetectionFingerprintButton);
+
         suspectsFingerprint = GetImage((int)Images.SuspectsFingerprint);
         weaponsFingerprint = GetImage((int)Images.WeaponsFingerprint);
+        suspectFingerprintExplainText = GetText((int)Texts.SuspectFingerprintExplainText);
+        weaponFingerprintExplainText = GetText((int)Texts.WeaponFingerprintExplainText);
+        detectionFingerprintText = GetText((int)Texts.DetectionFingerprintText);
 
-        GetButton((int)Buttons.CancleButton).gameObject.BindEvent(CloseThisPopupUI);
+        RefeshMenu();
 	}
+
+    /** 두 지문 이미지, 지문 설명, 지문 검출 여부도 재설정 **/
+    private void RefeshMenu()
+    {
+        List<SuspectInfo> suspects = GameManager.Ingame.CaseData.GetSuspects();
+        Sprite[] fingerPrintSprites = GameManager.Resource.LoadAll<Sprite>("Sprites/Fingerprint_Sprite");
+        Sprite[] GUI2 = GameManager.Resource.LoadAll<Sprite>("Sprites/GUI2");
+
+        /** 용의자 지문 불러오기 **/
+        SuspectInfo currentSuspect = suspects[suspectFingerprintIndex];
+        if (GameManager.Ingame.PrograssData.CheckDetectionSuspectsFingerprint(currentSuspect.GetSuspectCode()))
+        {
+            int spriteCode = currentSuspect.GetFingerprintSpriteCode();
+            suspectsFingerprint.sprite = fingerPrintSprites[spriteCode];
+        }
+        else
+        {
+            suspectsFingerprint.sprite = GUI2[4];
+        }
+
+        /** 무기 지문 불러오기 **/
+        List<int> currentWeaponFingerprintSpriteCode = GameManager.Ingame.PrograssData.GetSuspectedWeapon().GetLaidFingerprintSpriteCodes();
+        weaponsFingerprint.sprite = fingerPrintSprites[currentWeaponFingerprintSpriteCode[weaponFingerprintIndex]];
+
+        /** 용의자 지문 설명 불러오기 **/
+        suspectFingerprintExplainText.text = $"용의자 {currentSuspect.GetName()}";
+
+        /** 무기 지문 설명 불러오기 **/
+        weaponFingerprintExplainText.text = $"{weaponFingerprintIndex + 1}번째 지문";
+
+        /** 지문 검출 여부 텍스트 불러오기 **/
+        GameManager.Ingame.PrograssData.SetDetectionFingerprintForDeduction(detectionFingerprintText, currentSuspect.GetSuspectCode());
+    }
 
     private void OnBeforeSuspectFingerprintButton(PointerEventData data)
     {
-
+        if (suspectFingerprintIndex > 0)
+        {
+            suspectFingerprintIndex--;
+            RefeshMenu();
+        }
     }
 
     private void OnNextSuspectFingerprintButton(PointerEventData data)
     {
-
+        if (suspectFingerprintIndex < 2)
+        {
+            suspectFingerprintIndex++;
+            RefeshMenu();
+        }
     }
     
     private void OnBeforeSWeaponFingerprintButton(PointerEventData data)
     {
-
+        if (weaponFingerprintIndex > 0)
+        {
+            weaponFingerprintIndex--;
+            RefeshMenu();
+        }
     }
 
     private void OnNextSWeaponFingerprintButton(PointerEventData data)
     {
-
+        Weapon curWeapon = GameManager.Ingame.PrograssData.GetSuspectedWeapon();
+        if (weaponFingerprintIndex < curWeapon.GetLaidFingerprints().Count - 1)
+        {
+            weaponFingerprintIndex++;
+            RefeshMenu();
+        }
     }
 
     private void OnChangeDetectionFingerprintButton(PointerEventData data)
     {
+        List<SuspectInfo> suspects = GameManager.Ingame.CaseData.GetSuspects();
+        SuspectInfo currentSuspect = suspects[suspectFingerprintIndex];
 
+        GameManager.Ingame.PrograssData.ChangeIsDetectiveFingerprintFromWeapons(currentSuspect.GetSuspectCode());
+        RefeshMenu();
     }
 }

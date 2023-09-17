@@ -149,7 +149,7 @@ public class CrimeCaseData
         PropLoader _propLoader = new PropLoader();
 
         /** 동기 부여 소품 로딩 **/
-        motivationExplainProps = _propLoader.LoadMotivationExpainProps(crimeCaseScenario, suspects, fakeSuspects[0]);
+        motivationExplainProps = _propLoader.LoadMotivationExpainProps(crimeCaseScenario, suspects, fakeSuspects[1]);
 
         /** 평범한 소품 로딩 **/
         props = _propLoader.LoadProps(crimeCaseScenario);

@@ -44,6 +44,7 @@ public class Weapon : Evidence
             laidFingerPrintSpriteCodes.Add(fingerprintInfo[i].Item2);
         }
     }
+    
     public string GetWoundType()
     {
         return woundType;

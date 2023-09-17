@@ -21,6 +21,8 @@ public class DeductionPrograssData
 
     /** 현재 플레이어가 진짜 흉기로 의심 중인 무기 **/
     private Weapon suspectedWeapon = null;
+    /** 지문을 찾아낸 용의자들을 기록하는 딕셔너리 **/
+    private List<SuspectCode> SuspectsFoundFingerprints = new List<SuspectCode>();
     /** 각 흉기 후보들 간의 지문 검출 현황을 저장해놓는 딕셔너리 **/
     private Dictionary<Weapon, Dictionary<SuspectCode, bool>> IsDetectiveFingerprintFromWeapons = new Dictionary<Weapon, Dictionary<SuspectCode, bool>>();
     /** 각 용의자들의 범행 동기 추정 현황을 저장해놓는 딕셔너리 **/
@@ -30,7 +32,7 @@ public class DeductionPrograssData
             { "Red", new Color(1f, 0.117f, 0f, 1f) },
             { "Green", new Color(0.117f, 1f, 0f, 1f) },
             { "Yellow", new Color(1f, 1f, 0.117f, 1f) },
-             { "Grey", new Color(0.5f, 0.5f, 0.5f, 1f) },
+             { "Grey", new Color(0.5f, 0.5f, 0.5f, 1f) }
         };
 
     public void InitDeductotionData(CrimeCaseData _crimeCaseData)
@@ -56,7 +58,7 @@ public class DeductionPrograssData
     public void FindNewEvidence(Evidence newEvidence)
     {
         List<Evidence> evidences = GameManager.Ingame.CaseData.GetEvidences();
-
+ 
         for (int i = 0; i < 13; i++)
         {
             if (evidences[i] == newEvidence)
@@ -72,7 +74,20 @@ public class DeductionPrograssData
             SuspectCode explainSuspect = ((MotivationExplainProp)newEvidence).GetExplainingSuspect();
             string explainMotivation = ((MotivationExplainProp)newEvidence).GetMotivation();
 
-            suspectedMotivation.Add(explainSuspect, explainMotivation);
+            if (!suspectedMotivation.ContainsKey(explainSuspect))
+            {
+                suspectedMotivation.Add(explainSuspect, explainMotivation);
+            }
+        }
+        else if (newEvidence is FingerprintMemory)
+        {
+            FingerprintMemory newFingeprintMemory = newEvidence as FingerprintMemory;
+            SuspectCode masterSuspect = newFingeprintMemory.GetSuspectCode();
+
+            if (!SuspectsFoundFingerprints.Contains(masterSuspect))
+            {
+                SuspectsFoundFingerprints.Add(masterSuspect);
+            }
         }
     }
 
@@ -165,5 +180,16 @@ public class DeductionPrograssData
         if (IsFindEvidences[index] == 255)
             return true;
         return false;
+    }
+
+    public bool CheckDetectionSuspectsFingerprint(SuspectCode suspect)
+    {
+        return SuspectsFoundFingerprints.Contains(suspect);
+    }
+
+    public void ChangeIsDetectiveFingerprintFromWeapons(SuspectCode suspect)
+    {
+        bool temp = IsDetectiveFingerprintFromWeapons[suspectedWeapon][suspect];
+        IsDetectiveFingerprintFromWeapons[suspectedWeapon][suspect] = !temp;
     }
 }

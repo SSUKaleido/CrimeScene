@@ -32,7 +32,7 @@ public class DeductionPrograssData
             { "Red", new Color(1f, 0.117f, 0f, 1f) },
             { "Green", new Color(0.117f, 1f, 0f, 1f) },
             { "Yellow", new Color(1f, 1f, 0.117f, 1f) },
-             { "Grey", new Color(0.5f, 0.5f, 0.5f, 1f) }
+            { "Grey", new Color(0.5f, 0.5f, 0.5f, 1f) }
         };
 
     public void InitDeductotionData(CrimeCaseData _crimeCaseData)
@@ -191,5 +191,25 @@ public class DeductionPrograssData
     {
         bool temp = IsDetectiveFingerprintFromWeapons[suspectedWeapon][suspect];
         IsDetectiveFingerprintFromWeapons[suspectedWeapon][suspect] = !temp;
+    }
+
+    public Dictionary<SuspectCode, string> GetSuspectedMotivation()
+    {
+        return suspectedMotivation;
+    }
+
+    public string CheckSuspectedMotivation(SuspectCode code)
+    {
+        return suspectedMotivation[code];
+    }
+
+    public bool IsDetectionFingerprintCorrect(SuspectInfo targetSuspect)
+    {
+        Weapon realWeapon = GameManager.Ingame.CaseData.GetRealWeapon();
+        List<string> laidFingerprints = realWeapon.GetLaidFingerprints();
+        string targetFingerprint = targetSuspect.GetFingerprintType();
+        bool isDetect = IsDetectiveFingerprintFromWeapons[realWeapon][targetSuspect.GetSuspectCode()];
+
+        return isDetect == laidFingerprints.Contains(targetFingerprint);
     }
 }

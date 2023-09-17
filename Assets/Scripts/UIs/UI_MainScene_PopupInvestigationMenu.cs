@@ -17,6 +17,7 @@ public class UI_MainScene_PopupInvestigationMenu : UI_Popup
     private GameObject examineEvidence = null;
     private TextMeshProUGUI evidenceNameText = null;
     private TextMeshProUGUI evidenceExplainText = null;
+    private TextMeshProUGUI weaponWoundText = null;
 
     enum Images
     {
@@ -57,7 +58,8 @@ public class UI_MainScene_PopupInvestigationMenu : UI_Popup
     enum Texts
     {
         EvidenceNameText,
-        EvidenceExplainText
+        EvidenceExplainText,
+        WeaponWoundText
     }
 
     enum GameObjects
@@ -98,6 +100,7 @@ public class UI_MainScene_PopupInvestigationMenu : UI_Popup
         examineEvidence = GetObject((int)GameObjects.ExamineEvidence);
         evidenceNameText = GetText((int)Texts.EvidenceNameText);
         evidenceExplainText = GetText((int)Texts.EvidenceExplainText);
+        weaponWoundText = GetText((int)Texts.WeaponWoundText);
 
         LoadUIElements();
         LoadScrollView();
@@ -111,6 +114,7 @@ public class UI_MainScene_PopupInvestigationMenu : UI_Popup
         {
             evidenceNameText.text = "";
             evidenceExplainText.text = "";
+            weaponWoundText.text = "";
             pointRealCriminalButton.gameObject.SetActive(false);
             compareFingerprintButton.gameObject.SetActive(false);
             examineEvidence.SetActive(false);
@@ -120,6 +124,16 @@ public class UI_MainScene_PopupInvestigationMenu : UI_Popup
         Evidence temp = GameManager.Ingame.CaseData.GetEvidences()[examineEvidenceIndex];
         evidenceNameText.text = temp.GetName();
         evidenceExplainText.text = temp.GetflavorText();
+        if (temp is Weapon)
+        {
+            evidenceNameText.text = temp.GetName() + " <size=28><color=#FF1E00>(흉기 후보)</color></size>";
+            weaponWoundText.text = $"이 물건으로 입힐 수 있는 상해 유형은 {((Weapon)temp).GetWoundType()}입니다.";
+        }
+        else
+        {
+            evidenceNameText.text = temp.GetName();
+            weaponWoundText.text = "";
+        }
 
         examineEvidence.SetActive(true);
         changeExamineEvidence(examineEvidenceIndex);

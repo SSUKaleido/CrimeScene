@@ -28,6 +28,9 @@ public class CrimeCaseData
     List<Evidence> props = new List<Evidence>(2);
     List<Evidence> evidences = new List<Evidence>(13);
 
+    /** 마지막 지정한 진범 **/
+    SuspectInfo finalPointedSuspect;
+
     public void LoadCrimeCase(string inputedCaseCode)
     {
         /** 사건 번호에 따라 해당 값을 랜덤 시드로 결정 **/
@@ -253,5 +256,15 @@ public class CrimeCaseData
     public List<Evidence> GetEvidences()
     {
         return evidences;
+    }
+
+    public void SetFinalPointedSuspect(SuspectInfo input)
+    {
+        finalPointedSuspect = input;
+    }
+
+    public SuspectInfo GetFinalPointedSuspect()
+    {
+        return finalPointedSuspect;
     }
 }

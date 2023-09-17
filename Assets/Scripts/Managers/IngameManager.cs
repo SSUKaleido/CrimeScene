@@ -49,13 +49,6 @@ public class IngameManager
 
     public GameObject CreateEvidenceModel(Evidence evidence)
     {   
-        /** 한 번 발견했던 프리펩은 쉽게 인스턴스?
-        if (EvidencePrefabs.ContainsKey(evidence.GetName()))
-        {
-            GameObject existingEvidence = GameManager.Resource.Instantiate(EvidencePrefabs[evidence.GetName()]);
-            return existingEvidence;
-        } **/
-
         string evidenceFileName = evidence.GetFilename();
         GameObject newEvidence = new GameObject { name = evidence.GetName() };
         MeshFilter evidenceMeshFilter = newEvidence.AddComponent<MeshFilter>();

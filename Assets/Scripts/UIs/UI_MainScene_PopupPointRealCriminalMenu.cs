@@ -7,17 +7,22 @@ using TMPro;
 
 public class UI_MainScene_PopupPointRealCriminalMenu : UI_Popup
 {
+    List<SuspectInfo> suspects = null;
+
+    SuspectInfo pointedSuspect = null;
+    TextMeshProUGUI pointedSuspectText;
+
     enum Images
     {
-        Suspect1Cursor,
-        Suspect2Cursor,
-        Suspect3Cursor
     }
 
     enum Buttons
     {
         CancleButton,
-        ConfirmPointButton
+        ConfirmPointButton,
+        Suspect1Cursor,
+        Suspect2Cursor,
+        Suspect3Cursor
     }
 
     enum Texts
@@ -40,6 +45,7 @@ public class UI_MainScene_PopupPointRealCriminalMenu : UI_Popup
         Suspect1MotivationText,
         Suspect2MotivationText,
         Suspect3MotivationText,
+        PointedSuspectText
     }
 
     enum GameObjects
@@ -63,13 +69,43 @@ public class UI_MainScene_PopupPointRealCriminalMenu : UI_Popup
 
         GetButton((int)Buttons.CancleButton).gameObject.BindEvent(CloseThisPopupUI);
         GetButton((int)Buttons.ConfirmPointButton).gameObject.BindEvent(OnConfirmPointButton);
+        GetButton((int)Buttons.Suspect1Cursor).gameObject.BindEvent(OnSuspect1Cursor);
+        GetButton((int)Buttons.Suspect2Cursor).gameObject.BindEvent(OnSuspect2Cursor);
+        GetButton((int)Buttons.Suspect3Cursor).gameObject.BindEvent(OnSuspect3Cursor);
+
+        pointedSuspectText = GetText((int)Texts.PointedSuspectText);
+        suspects = GameManager.Ingame.CaseData.GetSuspects();
 
         InitTexts();
     }
 
     private void OnConfirmPointButton(PointerEventData data)
     {
+        if (pointedSuspect == null)
+        {
+            return;
+        }
 
+        GameManager.Ingame.CaseData.SetFinalPointedSuspect(pointedSuspect);
+        GameManager.UI.ShowPopupUI<UI_MainScene_PopupGameEndMenu>("MainScene_PopupGameEndMenu");
+    }
+
+    private void OnSuspect1Cursor(PointerEventData data)
+    {
+        pointedSuspect = suspects[0];
+        pointedSuspectText.text = pointedSuspect.GetName();
+    }
+    
+    private void OnSuspect2Cursor(PointerEventData data)
+    {
+        pointedSuspect = suspects[1];
+        pointedSuspectText.text = pointedSuspect.GetName();
+    }
+
+    private void OnSuspect3Cursor(PointerEventData data)
+    {
+        pointedSuspect = suspects[2];
+        pointedSuspectText.text = pointedSuspect.GetName();
     }
 
     private void InitTexts()
@@ -85,6 +121,7 @@ public class UI_MainScene_PopupPointRealCriminalMenu : UI_Popup
         GetText((int)Texts.Suspect1RelationText).text = _suspects[0].GetRelationWithVictim();
         GetText((int)Texts.Suspect2RelationText).text = _suspects[1].GetRelationWithVictim();
         GetText((int)Texts.Suspect3RelationText).text = _suspects[2].GetRelationWithVictim();
+        pointedSuspectText.text = "";
 
         DeductionPrograssData presentPrograssData = GameManager.Ingame.PrograssData;
         presentPrograssData.SetSuitablityForDeduction(GetText((int)Texts.Suspect1SuitablityText), _suspects[0].GetSuspectCode());

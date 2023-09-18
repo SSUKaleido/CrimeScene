@@ -27,11 +27,15 @@ public class ScenarioLoader
     
     public ScenarioLoader()
     {
-        _crimeCaseScenarioList = new List<ScenarioType>() {
+        /**_crimeCaseScenarioList = new List<ScenarioType>() {
         ScenarioType.ConsertMurderCrime,
         ScenarioType.HospitalMurderCrime,
         ScenarioType.HighSchoolMurderCrime,
         ScenarioType.WeddingMurderCrime
+        }; **/
+
+        _crimeCaseScenarioList = new List<ScenarioType>() {
+        ScenarioType.HospitalMurderCrime
         };
 
         _victimGenderPerScenrario = new Dictionary<ScenarioType, List<string>> {

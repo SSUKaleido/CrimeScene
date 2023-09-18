@@ -31,7 +31,7 @@ public class WeaponLoader
                 new List<SuspectCode> { SuspectCode.Suspect1, SuspectCode.Suspect2, SuspectCode.Suspect4 } ),
                 ("자상", "송곳",
                 new List<SuspectCode> { SuspectCode.Suspect3, SuspectCode.Suspect5 } ),
-                ("창상", "원형 전기톱",
+                ("창상", "톱",
                 new List<SuspectCode> { SuspectCode.Suspect3, SuspectCode.Suspect4 } ),
                 ("창상", "양날칼",
                 new List<SuspectCode> { SuspectCode.Suspect4 } ),

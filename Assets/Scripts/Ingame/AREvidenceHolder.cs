@@ -167,7 +167,6 @@ public class AREvidenceHolder : MonoBehaviour
                 {
                     if (isNowSwiping)
                     {
-                        Debug.Log("Swiping!");
                         Vector3 deltaPos = inputTouch.deltaPosition;
                         Vector3 rotationAxis = mainCamera.transform.right * deltaPos.y - mainCamera.transform.up * deltaPos.x;
                         HoldingEvidence.transform.Rotate(rotationAxis, Space.World);

@@ -109,6 +109,7 @@ public class UI_MainScene_PopupCompareFingerprintMenu : UI_Popup
 
     private void OnBeforeSuspectFingerprintButton(PointerEventData data)
     {
+        GameManager.Sound.Play("Sounds/UIButtonEffect1");
         if (suspectFingerprintIndex > 0)
         {
             suspectFingerprintIndex--;
@@ -118,6 +119,7 @@ public class UI_MainScene_PopupCompareFingerprintMenu : UI_Popup
 
     private void OnNextSuspectFingerprintButton(PointerEventData data)
     {
+        GameManager.Sound.Play("Sounds/UIButtonEffect1");
         if (suspectFingerprintIndex < 2)
         {
             suspectFingerprintIndex++;
@@ -127,6 +129,7 @@ public class UI_MainScene_PopupCompareFingerprintMenu : UI_Popup
     
     private void OnBeforeSWeaponFingerprintButton(PointerEventData data)
     {
+        GameManager.Sound.Play("Sounds/UIButtonEffect1");
         if (weaponFingerprintIndex > 0)
         {
             weaponFingerprintIndex--;
@@ -136,6 +139,7 @@ public class UI_MainScene_PopupCompareFingerprintMenu : UI_Popup
 
     private void OnNextSWeaponFingerprintButton(PointerEventData data)
     {
+        GameManager.Sound.Play("Sounds/UIButtonEffect1");
         Weapon curWeapon = GameManager.Ingame.PrograssData.GetSuspectedWeapon();
         if (weaponFingerprintIndex < curWeapon.GetLaidFingerprints().Count - 1)
         {
@@ -146,6 +150,7 @@ public class UI_MainScene_PopupCompareFingerprintMenu : UI_Popup
 
     private void OnChangeDetectionFingerprintButton(PointerEventData data)
     {
+        GameManager.Sound.Play("Sounds/UIButtonEffect1");
         List<SuspectInfo> suspects = GameManager.Ingame.CaseData.GetSuspects();
         SuspectInfo currentSuspect = suspects[suspectFingerprintIndex];
 

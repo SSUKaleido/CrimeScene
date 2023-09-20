@@ -62,6 +62,7 @@ public class UI_MainScene_PopupEncyclopediaMenu : UI_Popup
 
     private void OnInvestigationTutorialButton(PointerEventData data)
     {
+        GameManager.Sound.Play("Sounds/UIButtonEffect1");
         if (currentLayout == investigationTutorialScrollView)
             return;
         
@@ -70,6 +71,7 @@ public class UI_MainScene_PopupEncyclopediaMenu : UI_Popup
 
     private void OnWeaponTutorialButton(PointerEventData data)
     {
+        GameManager.Sound.Play("Sounds/UIButtonEffect1");
         if (currentLayout == weaponTutorialScrollView)
             return;
         
@@ -78,6 +80,7 @@ public class UI_MainScene_PopupEncyclopediaMenu : UI_Popup
 
     private void OnFingerprintTutorialButton(PointerEventData data)
     {
+        GameManager.Sound.Play("Sounds/UIButtonEffect1");
         if (currentLayout == fingerprintTutorialScrollView)
             return;
 
@@ -86,6 +89,7 @@ public class UI_MainScene_PopupEncyclopediaMenu : UI_Popup
 
     private void OnMotivationTutorialButton(PointerEventData data)
     {
+        GameManager.Sound.Play("Sounds/UIButtonEffect1");
         if (currentLayout == motivationTutorialScrollView)
             return;
         

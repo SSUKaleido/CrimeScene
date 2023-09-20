@@ -81,6 +81,7 @@ public class UI_MainScene_PopupPointRealCriminalMenu : UI_Popup
 
     private void OnConfirmPointButton(PointerEventData data)
     {
+        GameManager.Sound.Play("Sounds/UIButtonEffect1");
         if (pointedSuspect == null)
         {
             return;

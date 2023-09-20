@@ -82,12 +82,14 @@ public class UI_MainScene_PopupCaseMenu : UI_Popup
 
     private void OnCaseInfoButton(PointerEventData data)
     {
+        GameManager.Sound.Play("Sounds/UIButtonEffect1");
         victimLayout.SetActive(false);
         caseLayout.SetActive(true);
     }
 
     private void OnVictimInfoButton(PointerEventData data)
     {
+        GameManager.Sound.Play("Sounds/UIButtonEffect1");
         caseLayout.SetActive(false);
         victimLayout.SetActive(true);
     }

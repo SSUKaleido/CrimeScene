@@ -226,6 +226,7 @@ public class UI_MainScene_PopupInvestigationMenu : UI_Popup
 
     private void OnPointRealWeaponButton(PointerEventData data)
     {
+        GameManager.Sound.Play("Sounds/UIButtonEffect1");
         Evidence suspectedWeapon = GameManager.Ingame.CaseData.GetEvidences()[examineEvidenceIndex];
         GameManager.Ingame.PrograssData.SetSuspectedWeapon(suspectedWeapon as Weapon);
         RefreshMenu();
@@ -233,6 +234,7 @@ public class UI_MainScene_PopupInvestigationMenu : UI_Popup
 
     private void OnCompareFingerprintButton(PointerEventData data)
     {
+        GameManager.Sound.Play("Sounds/UIButtonEffect1");
         GameManager.UI.ShowPopupUI<UI_MainScene_PopupCompareFingerprintMenu>("MainScene_PopupCompareFingerprintMenu");
     }
 

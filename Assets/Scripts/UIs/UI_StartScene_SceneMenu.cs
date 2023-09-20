@@ -54,10 +54,12 @@ public class UI_StartScene_SceneMenu : UI_Scene
 	}
 
     private void OnGameStartButton(PointerEventData data) {
+        GameManager.Sound.Play("Sounds/UIPopupMenuEffect");
         GameManager.UI.ShowPopupUI<UI_StartScene_PopupSubmitCaseCodeMenu>("StartScene_PopupSubmitCaseCodeMenu");
     }
 
     private void OnGameCountinueButton(PointerEventData data) {
+        GameManager.Sound.Play("Sounds/UIPopupMenuEffect");
         GameManager.UI.ShowPopupUI<UI_StartScene_PopupCountinueCaseMenu>("StartScene_PopupCountinueCaseMenu");
     }
 
@@ -70,6 +72,7 @@ public class UI_StartScene_SceneMenu : UI_Scene
     }
 
     private void OnSettingButton(PointerEventData data) {
+        GameManager.Sound.Play("Sounds/UIPopupMenuEffect");
         GameManager.UI.ShowPopupUI<UI_StartScene_PopupSettingMenu>("StartScene_PopupSettingMenu");
     }
 }

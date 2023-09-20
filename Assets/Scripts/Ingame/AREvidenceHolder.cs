@@ -122,7 +122,7 @@ public class AREvidenceHolder : MonoBehaviour
     private Vector2 curTouchPos;
     private bool isNowSwiping = false;
     private bool doubleClickCheck = false;
-    private const float doubleTouchDelay = 0.1f;
+    private const float doubleTouchDelay = 0.3f;
     /**
     * 화면 스와이프 단서 회전과 더블 클릭 단서 제거를 담당하는 메서드
     * 이 메서드는 GameManager.Input에 등록되어야 함.

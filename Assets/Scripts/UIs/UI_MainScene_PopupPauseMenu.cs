@@ -46,6 +46,7 @@ public class UI_MainScene_PopupPauseMenu : UI_Popup
 
     private void OnIngameExitButton(PointerEventData data)
     {
+        GameManager.Sound.Play("Sounds/UIButtonEffect1");
         GameManager.Scene.LoadScene(Define.Scene.StartScene);
     }
 }

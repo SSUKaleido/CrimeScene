@@ -53,6 +53,7 @@ public class UI_StartScene_PopupSubmitCaseCodeMenu : UI_Popup
     /** MainScene을 로드하는 메서드 */
     public void OnGameStartButton(PointerEventData data)
     {
+        GameManager.Sound.Play("Sounds/UIButtonEffect1");
         string inputedCaseCode = GetObject((int)GameObjects.CaseCodeInputField).GetComponent<TMP_InputField>().text;
 
         if (CaseCodeChecker.CheckRightCaseCode(inputedCaseCode))

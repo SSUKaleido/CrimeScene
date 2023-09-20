@@ -79,6 +79,7 @@ public class UI_MainScene_PopupGameEndMenu : UI_Popup
 
     private void OnReturnStartMeneyButton(PointerEventData data)
     {
+        GameManager.Sound.Play("Sounds/UIButtonEffect1");
         GameManager.Scene.LoadScene(Define.Scene.StartScene);
     }
 

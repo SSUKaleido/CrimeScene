@@ -47,6 +47,7 @@ public class UI_ARCaptureScene_SceneMenu : UI_Scene
 	}
 
     public void OnResumeDeductionButton(PointerEventData data) {
+        GameManager.Sound.Play("Sounds/UIButtonEffect1");
         GameManager.Scene.LoadScene(Define.Scene.MainScene);
     }
 }

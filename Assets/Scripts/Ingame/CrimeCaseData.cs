@@ -115,12 +115,12 @@ public class CrimeCaseData
                 incluedFingerprintTypes.Add(fakeSuspects[1].GetFingerprintType());
                 incluedFingerprintTypes.Add(realCriminal.GetFingerprintType());
             }
-            else if (eachWeapon.GetWoundType() == realWeapon.GetWoundType())
+            else if (eachWeapon != realWeapon && eachWeapon.GetWoundType() == realWeapon.GetWoundType())
             {
                 excluedFingerprintTypes.Add(realCriminal.GetFingerprintType());
-                excluedFingerprintTypes.Add(fakeSuspects[1].GetFingerprintType());
+                excluedFingerprintTypes.Add(fakeSuspects[0].GetFingerprintType());
                 /** 추후 범행동기 설명 소품에서 배제될 가짜 용의자의 지문을 무조건 포함 **/
-                incluedFingerprintTypes.Add(fakeSuspects[0].GetFingerprintType());
+                incluedFingerprintTypes.Add(fakeSuspects[1].GetFingerprintType());
             }
 
             List<(string, int)> laidFingerprintInfo

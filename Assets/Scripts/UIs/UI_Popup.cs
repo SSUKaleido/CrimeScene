@@ -20,6 +20,7 @@ public class UI_Popup : UI_Base
 
     public void CloseThisPopupUI(PointerEventData data)
     {
+        GameManager.Sound.Play("Sounds/UIButtonEffect1");
         GameManager.UI.ClosePopupUI(this);
     }
 }

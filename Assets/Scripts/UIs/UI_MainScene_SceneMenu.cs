@@ -75,6 +75,7 @@ public class UI_MainScene_SceneMenu : UI_Scene
 
     private void OnCaseMenuButton(PointerEventData data)
     {
+        GameManager.Sound.Play("Sounds/UIButtonEffect2");
         GameManager.UI.CloseAllPopupUI();
         GameManager.UI.ShowPopupUI<UI_MainScene_PopupCaseMenu>("MainScene_PopupCaseMenu");
         ChangeMenuImage(0);
@@ -82,6 +83,7 @@ public class UI_MainScene_SceneMenu : UI_Scene
 
     private void OnInvestigationMenuButton(PointerEventData data)
     {
+        GameManager.Sound.Play("Sounds/UIButtonEffect2");
         GameManager.UI.CloseAllPopupUI();
         GameManager.UI.ShowPopupUI<UI_MainScene_PopupInvestigationMenu>("MainScene_PopupInvestigationMenu");
         ChangeMenuImage(1);
@@ -89,6 +91,7 @@ public class UI_MainScene_SceneMenu : UI_Scene
 
     private void OnDeductionMenuButton(PointerEventData data)
     {
+        GameManager.Sound.Play("Sounds/UIButtonEffect2");
         GameManager.UI.CloseAllPopupUI();
         GameManager.UI.ShowPopupUI<UI_MainScene_PopupDeductionMenu>("MainScene_PopupDeductionMenu");
         ChangeMenuImage(2);
@@ -96,6 +99,7 @@ public class UI_MainScene_SceneMenu : UI_Scene
 
     private void OnEncyclopediaMenuButton(PointerEventData data)
     {
+        GameManager.Sound.Play("Sounds/UIButtonEffect2");
         GameManager.UI.CloseAllPopupUI();
         GameManager.UI.ShowPopupUI<UI_MainScene_PopupEncyclopediaMenu>("MainScene_PopupEncyclopediaMenu");
         ChangeMenuImage(3);
@@ -122,16 +126,19 @@ public class UI_MainScene_SceneMenu : UI_Scene
 
     private void OnPointRealCriminalButton(PointerEventData data)
     {
+        GameManager.Sound.Play("Sounds/UIPopupMenuEffect");
         GameManager.UI.ShowPopupUI<UI_MainScene_PopupPointRealCriminalMenu>("MainScene_PopupPointRealCriminalMenu");
     }
 
     private void OnSearchEvidenceButton(PointerEventData data)
     {
+        GameManager.Sound.Play("Sounds/UIPopupMenuEffect");
         GameManager.Scene.LoadScene(Define.Scene.ARCaptureScene);
     }
 
     private void OnPauseButton(PointerEventData data)
     {
+        GameManager.Sound.Play("Sounds/UIPopupMenuEffect");
         GameManager.UI.ShowPopupUI<UI_MainScene_PopupPauseMenu>("MainScene_PopupPauseMenu");
     }
 

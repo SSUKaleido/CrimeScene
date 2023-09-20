@@ -35,7 +35,7 @@ public class ScenarioLoader
         }; **/
 
         _crimeCaseScenarioList = new List<ScenarioType>() {
-        ScenarioType.HospitalMurderCrime
+        ScenarioType.ConsertMurderCrime
         };
 
         _victimGenderPerScenrario = new Dictionary<ScenarioType, List<string>> {

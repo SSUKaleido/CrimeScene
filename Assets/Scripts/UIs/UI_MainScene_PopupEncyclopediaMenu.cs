@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
-public class UI_MainScene_PopupEncyclopediaMenu : UI_Popup
+public class UI_MainScene_PopupEncyclopediaMenu : UI_MainSceneMenu
 {
     GameObject investigationTutorialScrollView = null;
     GameObject weaponTutorialScrollView = null;
@@ -115,5 +116,15 @@ public class UI_MainScene_PopupEncyclopediaMenu : UI_Popup
         currentLayout.SetActive(false);
         newLayout.SetActive(true);
         currentLayout = newLayout;
+    }
+
+    public override void SpawnAnimation(int previewIndex)
+    {
+
+    }
+
+    public override int DespawnAnimation(int nextIndex)
+    {
+        return 3;
     }
 }

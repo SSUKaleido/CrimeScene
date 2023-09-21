@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
-public class UI_MainScene_PopupInvestigationMenu : UI_Popup
+public class UI_MainScene_PopupInvestigationMenu : UI_MainSceneMenu
 {
     private int examineEvidenceIndex = -1;
 
@@ -359,5 +360,15 @@ public class UI_MainScene_PopupInvestigationMenu : UI_Popup
     {
         string path = $"RenderTexture/Evidence{index + 1}RenderTexture";          
         examineEvidence.GetComponent<RawImage>().texture = GameManager.Resource.Load<RenderTexture>(path);
+    }
+
+    public override void SpawnAnimation(int previewIndex)
+    {
+        
+    }
+
+    public override int DespawnAnimation(int nextIndex)
+    {
+        return 1;
     }
 }

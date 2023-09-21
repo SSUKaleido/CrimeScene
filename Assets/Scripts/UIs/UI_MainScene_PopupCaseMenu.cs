@@ -5,12 +5,14 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 using ScenarioType = Define.ScenarioType;
 
-public class UI_MainScene_PopupCaseMenu : UI_Popup
+public class UI_MainScene_PopupCaseMenu : UI_MainSceneMenu
 {
     GameObject caseLayout = null;
     GameObject victimLayout = null;
+    RectTransform panel = null;
 
     Dictionary<ScenarioType, List<string>> ScenarioExplain = null;
     Dictionary<ScenarioType, List<string>> Testimonies = null;
@@ -49,7 +51,8 @@ public class UI_MainScene_PopupCaseMenu : UI_Popup
     enum GameObjects
     {
         CaseLayout,
-        VictimLayout
+        VictimLayout,
+        Panel
     }
 
     private void Start()
@@ -69,6 +72,7 @@ public class UI_MainScene_PopupCaseMenu : UI_Popup
 
         caseLayout = GetObject((int)GameObjects.CaseLayout);
         victimLayout = GetObject((int)GameObjects.VictimLayout);
+        panel = GetObject((int)GameObjects.Panel).GetComponent<RectTransform>();
 
         GetButton((int)Buttons.CaseInfoButton).gameObject.BindEvent(OnCaseInfoButton);
         GetButton((int)Buttons.VictimInfoButton).gameObject.BindEvent(OnVictimInfoButton);
@@ -177,5 +181,14 @@ public class UI_MainScene_PopupCaseMenu : UI_Popup
         GetText((int)Texts.TestimonyText3).text = Testimonies[_scenario][2];
         GetText((int)Texts.TestimonyText4).text = Testimonies[_scenario][3];
         GetText((int)Texts.TestimonyText5).text = Testimonies[_scenario][4];
+    }
+
+    public override void SpawnAnimation(int previewIndex)
+    {
+    }
+
+    public override int DespawnAnimation(int nextIndex)
+    {
+        return 0;
     }
 }

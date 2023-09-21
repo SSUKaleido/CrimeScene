@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 using SuspectCode = Define.SuspectCode;
 
 public class UI_MainScene_PopupGameEndMenu : UI_Popup
@@ -54,7 +55,7 @@ public class UI_MainScene_PopupGameEndMenu : UI_Popup
 
     enum GameObjects
     {
-        
+        PopupMenu
     }
 
     private void Start()
@@ -75,6 +76,8 @@ public class UI_MainScene_PopupGameEndMenu : UI_Popup
         GetButton((int)Buttons.ReturnStartMeneyButton).gameObject.BindEvent(OnReturnStartMeneyButton);
 
         InitTexts();
+
+        GetObject((int)GameObjects.PopupMenu).GetComponent<RectTransform>().DOAnchorPos(new Vector3(0f, 0f), 0.5f, true);
     }
 
     private void OnReturnStartMeneyButton(PointerEventData data)

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class UI_MainScene_PopupPointRealCriminalMenu : UI_Popup
 {
@@ -50,6 +51,7 @@ public class UI_MainScene_PopupPointRealCriminalMenu : UI_Popup
 
     enum GameObjects
     {
+        PopupMenu
     }
 
     private void Start()
@@ -77,6 +79,8 @@ public class UI_MainScene_PopupPointRealCriminalMenu : UI_Popup
         suspects = GameManager.Ingame.CaseData.GetSuspects();
 
         InitTexts();
+
+        GetObject((int)GameObjects.PopupMenu).GetComponent<RectTransform>().DOAnchorPos(new Vector3(0f, 0f), 0.5f, true);
     }
 
     private void OnConfirmPointButton(PointerEventData data)
@@ -93,18 +97,21 @@ public class UI_MainScene_PopupPointRealCriminalMenu : UI_Popup
 
     private void OnSuspect1Cursor(PointerEventData data)
     {
+        GameManager.Sound.Play("Sounds/UIButtonEffect1");
         pointedSuspect = suspects[0];
         pointedSuspectText.text = pointedSuspect.GetName();
     }
     
     private void OnSuspect2Cursor(PointerEventData data)
     {
+        GameManager.Sound.Play("Sounds/UIButtonEffect1");
         pointedSuspect = suspects[1];
         pointedSuspectText.text = pointedSuspect.GetName();
     }
 
     private void OnSuspect3Cursor(PointerEventData data)
     {
+        GameManager.Sound.Play("Sounds/UIButtonEffect1");
         pointedSuspect = suspects[2];
         pointedSuspectText.text = pointedSuspect.GetName();
     }

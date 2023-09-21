@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class UI_MainScene_PopupPauseMenu : UI_Popup
 {
@@ -23,6 +24,7 @@ public class UI_MainScene_PopupPauseMenu : UI_Popup
 
     enum GameObjects
     {
+        PopupMenu
     }
 
     private void Start()
@@ -42,6 +44,8 @@ public class UI_MainScene_PopupPauseMenu : UI_Popup
 
         GetButton((int)Buttons.CancleButton).gameObject.BindEvent(CloseThisPopupUI);
         GetButton((int)Buttons.IngameExitButton).gameObject.BindEvent(OnIngameExitButton);
+
+        GetObject((int)GameObjects.PopupMenu).GetComponent<RectTransform>().DOAnchorPos(new Vector3(0f, 0f), 0.5f, true);
 	}
 
     private void OnIngameExitButton(PointerEventData data)

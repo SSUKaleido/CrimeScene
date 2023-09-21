@@ -76,32 +76,40 @@ public class UI_MainScene_SceneMenu : UI_Scene
     private void OnCaseMenuButton(PointerEventData data)
     {
         GameManager.Sound.Play("Sounds/UIButtonEffect2");
+        int previewIndex = DespawnCurrentMenu(0);
         GameManager.UI.CloseAllPopupUI();
-        GameManager.UI.ShowPopupUI<UI_MainScene_PopupCaseMenu>("MainScene_PopupCaseMenu");
+        UI_MainSceneMenu newMenu = GameManager.UI.ShowPopupUI<UI_MainScene_PopupCaseMenu>("MainScene_PopupCaseMenu") as UI_MainSceneMenu;
+        SpawnCurrentMenu(newMenu, previewIndex);
         ChangeMenuImage(0);
     }
 
     private void OnInvestigationMenuButton(PointerEventData data)
     {
         GameManager.Sound.Play("Sounds/UIButtonEffect2");
+        int previewIndex = DespawnCurrentMenu(1);
         GameManager.UI.CloseAllPopupUI();
-        GameManager.UI.ShowPopupUI<UI_MainScene_PopupInvestigationMenu>("MainScene_PopupInvestigationMenu");
+        UI_MainSceneMenu newMenu = GameManager.UI.ShowPopupUI<UI_MainScene_PopupInvestigationMenu>("MainScene_PopupInvestigationMenu") as UI_MainSceneMenu;
+        SpawnCurrentMenu(newMenu, previewIndex);
         ChangeMenuImage(1);
     }
 
     private void OnDeductionMenuButton(PointerEventData data)
     {
         GameManager.Sound.Play("Sounds/UIButtonEffect2");
+        int previewIndex = DespawnCurrentMenu(2);
         GameManager.UI.CloseAllPopupUI();
-        GameManager.UI.ShowPopupUI<UI_MainScene_PopupDeductionMenu>("MainScene_PopupDeductionMenu");
+        UI_MainSceneMenu newMenu = GameManager.UI.ShowPopupUI<UI_MainScene_PopupDeductionMenu>("MainScene_PopupDeductionMenu") as UI_MainSceneMenu;
+        SpawnCurrentMenu(newMenu, previewIndex);
         ChangeMenuImage(2);
     }
 
     private void OnEncyclopediaMenuButton(PointerEventData data)
     {
         GameManager.Sound.Play("Sounds/UIButtonEffect2");
+        int previewIndex = DespawnCurrentMenu(3);
         GameManager.UI.CloseAllPopupUI();
-        GameManager.UI.ShowPopupUI<UI_MainScene_PopupEncyclopediaMenu>("MainScene_PopupEncyclopediaMenu");
+        UI_MainSceneMenu newMenu = GameManager.UI.ShowPopupUI<UI_MainScene_PopupEncyclopediaMenu>("MainScene_PopupEncyclopediaMenu") as UI_MainSceneMenu;
+        SpawnCurrentMenu(newMenu, previewIndex);
         ChangeMenuImage(3);
     }
 
@@ -122,6 +130,25 @@ public class UI_MainScene_SceneMenu : UI_Scene
             case 3 : MenuButtons[3].sprite = MenuButtonSprites[6]; break;
         }
         currnetMenuButtonIndex = nextMenuButtonIndex;
+    }
+
+    private int DespawnCurrentMenu(int nextIndex)
+    {
+        UI_Base curUI = GameManager.UI.CurrentTopUI();
+        int privewIndex = 0;
+        
+        if (curUI is UI_MainSceneMenu)
+        {
+            UI_MainSceneMenu curMenu = curUI as UI_MainSceneMenu;
+            privewIndex = curMenu.DespawnAnimation(nextIndex);
+        }
+
+        return privewIndex;
+    }
+
+    private void SpawnCurrentMenu(UI_MainSceneMenu curMenu, int previewIndex)
+    {
+        curMenu.SpawnAnimation(previewIndex);
     }
 
     private void OnPointRealCriminalButton(PointerEventData data)

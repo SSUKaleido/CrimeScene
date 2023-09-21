@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 /**
 * StartScene_PopupSubmitCaseCodeMenu 캔버스에 붙을 컴포넌트
@@ -28,7 +29,8 @@ public class UI_StartScene_PopupSubmitCaseCodeMenu : UI_Popup
 
     enum GameObjects
     {
-        CaseCodeInputField
+        CaseCodeInputField,
+        PopupMenu
     }
 
     private void Start()
@@ -48,6 +50,8 @@ public class UI_StartScene_PopupSubmitCaseCodeMenu : UI_Popup
 
         GetButton((int)Buttons.CancleButton).gameObject.BindEvent(CloseThisPopupUI);
         GetButton((int)Buttons.GameStartButton).gameObject.BindEvent(OnGameStartButton);
+
+        GetObject((int)GameObjects.PopupMenu).GetComponent<RectTransform>().DOAnchorPos(new Vector3(0f, 0f), 0.5f, true);
 	}
 
     /** MainScene을 로드하는 메서드 */

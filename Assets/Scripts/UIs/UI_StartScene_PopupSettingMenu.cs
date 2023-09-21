@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 /**
 * StartScene_PopupMenuSettingMEnu 캔버스에 붙을 컴포넌트
@@ -26,6 +27,7 @@ public class UI_StartScene_PopupSettingMenu : UI_Popup
     
     enum GameObjects
     {
+        PopupMenu
     }
 
     private void Start()
@@ -45,5 +47,7 @@ public class UI_StartScene_PopupSettingMenu : UI_Popup
 
         // (확장 메서드) CancleButton에 UI_EvenetHandler를 붙이고 OnCalcleButton 메서드를 등록한다.
         GetButton((int)Buttons.CancleButton).gameObject.BindEvent(CloseThisPopupUI);
+
+        GetObject((int)GameObjects.PopupMenu).GetComponent<RectTransform>().DOAnchorPos(new Vector3(0f, 0f), 0.5f, true);
 	}
 }

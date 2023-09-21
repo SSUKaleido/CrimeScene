@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
-public class UI_MainScene_PopupDeductionMenu : UI_Popup
+public class UI_MainScene_PopupDeductionMenu : UI_MainSceneMenu
 {
     enum Images
     {
@@ -98,5 +99,15 @@ public class UI_MainScene_PopupDeductionMenu : UI_Popup
         presentPrograssData.SetMotivationForDeduction(GetText((int)Texts.Suspect1MotivationText), _suspects[0].GetSuspectCode());
         presentPrograssData.SetMotivationForDeduction(GetText((int)Texts.Suspect2MotivationText), _suspects[1].GetSuspectCode());
         presentPrograssData.SetMotivationForDeduction(GetText((int)Texts.Suspect3MotivationText), _suspects[2].GetSuspectCode());
+    }
+
+    public override void SpawnAnimation(int previewIndex)
+    {
+
+    }
+
+    public override int DespawnAnimation(int nextIndex)
+    {
+        return 2;
     }
 }

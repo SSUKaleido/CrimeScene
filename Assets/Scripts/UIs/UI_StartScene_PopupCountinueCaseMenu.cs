@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class UI_StartScene_PopupCountinueCaseMenu : UI_Popup
 {
@@ -24,6 +25,7 @@ public class UI_StartScene_PopupCountinueCaseMenu : UI_Popup
 
     enum GameObjects
     {
+        PopupMenu
     }
 
     private void Start()
@@ -42,5 +44,7 @@ public class UI_StartScene_PopupCountinueCaseMenu : UI_Popup
         Bind<GameObject>(typeof(GameObjects));
 
         GetButton((int)Buttons.CancleButton).gameObject.BindEvent(CloseThisPopupUI);
+
+        GetObject((int)GameObjects.PopupMenu).GetComponent<RectTransform>().DOAnchorPos(new Vector3(0f, 0f), 0.5f, true);
 	}
 }

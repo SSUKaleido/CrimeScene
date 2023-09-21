@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class UI_MainScene_PopupCompareFingerprintMenu : UI_Popup
 {
@@ -41,6 +42,7 @@ public class UI_MainScene_PopupCompareFingerprintMenu : UI_Popup
 
     enum GameObjects
     {
+        PopupMenu
     }
 
     private void Start()
@@ -72,6 +74,8 @@ public class UI_MainScene_PopupCompareFingerprintMenu : UI_Popup
         detectionFingerprintText = GetText((int)Texts.DetectionFingerprintText);
 
         RefeshMenu();
+
+        GetObject((int)GameObjects.PopupMenu).GetComponent<RectTransform>().DOAnchorPos(new Vector3(0f, 0f), 0.5f, true);
 	}
 
     /** 두 지문 이미지, 지문 설명, 지문 검출 여부도 재설정 **/

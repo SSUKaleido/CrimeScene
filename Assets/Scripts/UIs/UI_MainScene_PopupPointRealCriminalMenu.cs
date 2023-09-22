@@ -80,6 +80,7 @@ public class UI_MainScene_PopupPointRealCriminalMenu : UI_Popup
 
         InitTexts();
 
+        //GetObject((int)GameObjects.PopupMenu).GetComponent<RectTransform>().rect = new Vector2(0f, -1600f);
         GetObject((int)GameObjects.PopupMenu).GetComponent<RectTransform>().DOAnchorPos(new Vector3(0f, 0f), 0.5f, true);
     }
 

@@ -110,6 +110,7 @@ public class UI_MainScene_PopupGameEndMenu : UI_Popup
             GetText((int)Texts.PlayerSuspect1NameText).text = suspects[0].GetName();
             GetText((int)Texts.PlayerSuspect2NameText).text = suspects[1].GetName();
             GetText((int)Texts.PlayerSuspect3NameText).text = suspects[2].GetName();
+            Debug.Log(pointedWeapon.GetName());
             GetText((int)Texts.PlayerPointWeaponText).text = $"<color=#FFFFE1>{pointedWeapon.GetName()}</color>";
             presentPrograssData.SetDetectionFingerprintForDeduction(GetText((int)Texts.PlayerSuspect1DetectiveFingerprintText), suspects[0].GetSuspectCode());
             presentPrograssData.SetDetectionFingerprintForDeduction(GetText((int)Texts.PlayerSuspect2DetectiveFingerprintText), suspects[1].GetSuspectCode());
